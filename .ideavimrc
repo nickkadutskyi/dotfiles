@@ -1,0 +1,61 @@
+source ~/.vimrc
+
+set NERDTree
+
+" Enables gcc gc{count}{motion} for commenting
+set commentary
+
+" Adds common action in IDE
+
+" Formatting
+nnoremap <leader>cf :action ReformatCode<CR>
+" Depending on the context will either expand Emmet abbreviation or choose
+" first lookup item
+imap <C-Y> <Action>(ExpandLiveTemplateCustom)<Action>(EditorChooseLookupItem)
+
+" Search and Switch
+nnoremap <leader>gf :action GotoFile<CR>
+nnoremap <leader>gc :action GotoClass<CR>
+nnoremap <leader>gs :action GotoSymbol<CR>
+nnoremap <leader>gd :action GotoDatabaseObject<CR>
+nnoremap <leader>fp :action FindInPath<CR>
+" Similar to Go to Buffer in my neovim setup
+nnoremap <leader>gb :action Switcher<CR>
+
+" View Modes
+nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
+
+" Replace
+" nnoremap <leader>fr
+
+" Running/Debugging
+" noremap <leader>dd :action Debug<CR>
+noremap <leader>cd :action ChooseDebugConfiguration<CR>
+noremap <leader>rr :action Run<CR>
+noremap <leader>cr :action ChooseRunConfiguration<CR>
+
+" Problems
+nnoremap <leader>xx :action ActivateProblemsViewToolWindow<CR>
+" nnoremap <leader>xq :action ProblemsView.QuickFixes<CR>
+nnoremap <leader>xq :action ShowIntentionActions<CR>
+
+" Project Window
+set NERDTree
+nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
+
+" Navigation
+" Go to Definition
+nnoremap gd :action GotoDeclaration<CR>
+" Forward Jump Pooint
+nnoremap <C-i> :action Forward<CR>
+" Back Jump Point
+nnoremap <C-o> :action Back<CR>
+" Scroll half screen and center
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap N Nzzzv
+nnoremap n nzzzv
+
+"false Split Window
+" nnoremap <C-W>s :action SplitHorizontally<CR>
+" nnoremap <C-T>v :action SplitVertically<CR>

@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.zshrc
+!.zprofile
+!.zshenv
+!.zpath
+!.vimrc
+!.ideavimrc
+!README.md
+
