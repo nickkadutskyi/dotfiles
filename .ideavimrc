@@ -44,8 +44,10 @@ set NERDTree
 nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
 
 " Navigation
-" Go to Definition
+" Go to Declaration or Usage
 nnoremap gd :action GotoDeclaration<CR>
+" Go to Implementation
+nnoremap gi :action GotoImplementation<CR>
 " Forward Jump Pooint
 nnoremap <C-i> :action Forward<CR>
 " Back Jump Point
