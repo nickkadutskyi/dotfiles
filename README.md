@@ -10,4 +10,4 @@ in `/etc/zshenv`
 (See https://www.zsh.org/mla/users/2003/msg00600.html)
 
 ## How to set up
-`git ls-files | xargs -I % -L 1 ln -s "path/to/sync/dir"/% ~/`
+`git ls-files .* | xargs -I % -L 1 ln -s "path/to/sync/dir"/% ~/`
