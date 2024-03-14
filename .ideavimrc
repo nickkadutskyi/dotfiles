@@ -36,6 +36,8 @@ noremap <leader>cr :action ChooseRunConfiguration<CR>
 
 " Problems
 nnoremap <leader>xx :action ActivateProblemsViewToolWindow<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
 " nnoremap <leader>xq :action ProblemsView.QuickFixes<CR>
 nnoremap <leader>xq :action ShowIntentionActions<CR>
 

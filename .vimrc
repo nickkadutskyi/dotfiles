@@ -1,5 +1,7 @@
 " Shared setting betwen Vim, Neovim, Ideavim
 
+" SETTINGS
+
 " Set <space> as leader key
 let mapleader = " "
 let maplocalleader = " "
@@ -34,7 +36,7 @@ if stridx(&runtimepath, expand(vimDir)) == -1
   " vimDir is not on runtimepath, add it
   let &runtimepath.=','.vimDir
 endif
-" Keep undo history across sessions by storing it in a file
+" Keep undo history and swap across sessions by storing it in a file
 if has('persistent_undo')
   " Keep neovim and vim undo files separate because of incompatibility
   if has('nvim')
@@ -42,11 +44,14 @@ if has('persistent_undo')
   else
     let myUndoDir = expand(vimDir . '/undovim')
   endif
+  let mySwapDir = expand(vimDir . '/swap')
   " Create dirs
   call system('mkdir ' . vimDir)
   call system('mkdir ' . myUndoDir)
   let &undodir = myUndoDir
+  let &directory = mySwapDir
   set undofile
+  set swapfile
 endif
 
 " Search settings
@@ -63,7 +68,7 @@ set signcolumn=yes
 
 " Decrease update time
 set updatetime=250
-set timeoutlen=300
+set timeoutlen=500
 
 " Ensures splits in right direction 
 set splitbelow
@@ -73,6 +78,12 @@ set splitright
 set list
 set listchars=tab:»\ ,trail:·,precedes:←,extends:→,nbsp:␣
 
+" Enables cursor line highlight groups
+set cursorline
+
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=3
+
 " Set the tab size to 2 spaces
 set tabstop=2
 set softtabstop=2
@@ -80,35 +91,31 @@ set shiftwidth=2
 " Use spaces instead of tabs
 set expandtab
 
-
-
 " Indents next line if current is indented
 set autoindent
-set smartindent
-
-" Enables cursor line highlight groups
-set cursorline
 
 " Soft wrap
 set wrap
 set nolinebreak
 set nolist
 
-
 " Hard wrap
 " set textwidth=120
 
-
-
+" RGB colors
 set termguicolors
 
-set scrolloff=3
 set isfname+=@-@
 
+" Adds visual guides 
+set colorcolumn=80,100,120
 
+" Disable backup files
+set nobackup
 
-" Remap
-"
+" MAPPINGS
+
+" Control what happens to the register when deleting, changing, and pasting
 " When deleting string don't add it to the register
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
@@ -119,13 +126,13 @@ nnoremap <leader>c "_c
 vnoremap <leader>c "_c
 nnoremap <leader>C "_C
 vnoremap <leader>C "_C
-" :
 " When deleting a character don't add it to the register
 nnoremap <leader>x "_x
 vnoremap <leader>x "_x
-
-" Paste over a selected text in visual mode without overwriting register
+" When pasting over a selection don't add selection to the register
 xnoremap <leader>p "_dP
+
+" Yank and paste to system clipboard
 " Yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
@@ -147,8 +154,12 @@ nnoremap n nzzzv
 " Go to previous search occurance and center window
 nnoremap N Nzzzv
 
+" Clear search highlight
+nnoremap <Esc> :noh<CR>
+" Clear search highlight and delete search history
+nnoremap <leader>/c :noh \| let@/ = "" \| call histdel("/", ".*")<CR>
+
 " Code Editing
-"
 " Move hightlighted Code
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
@@ -159,15 +170,6 @@ vnoremap <S-Up> :m '<-2<CR>gv=gv
 " Find and Replace currently selected text
 vnoremap <leader>hfr "hy:%s/<C-r>h/<C-r>h/gci<left><left><left><left>
 
-" nnoremap <leader>p "+p
-" nnoremap <leader>P "+P
-"
-" xnoremap <leader>p "_d"+p
-" xnoremap p "_dp
-
-" Exit search mode
-nnoremap <leader>/h :noh<CR>
-nnoremap <leader>/c :noh \| let@/ = "" \| call histdel("/", ".*")<CR>
 
 " Netrw
 let g:window_id_before_netrw = v:null
@@ -221,10 +223,13 @@ augroup netrw_mapping
 augroup END
 
 " Close Netrw when selecting a file
-augroup closeOnOpen
+augroup close_on_open
   autocmd!
   autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), "&filetype") != "netrw"|call <SID>CloseNetrw()|endif
 aug END
+
+
+" Help window mappings
 
 " Close help with q or escape
 augroup help
