@@ -6,6 +6,10 @@ alias mysqldump='/Applications/MAMP/Library/bin/mysqldump'
 alias php5='/Applications/MAMP/bin/php/php5.6.40/bin/php -c "/Library/Application Support/appsolute/MAMP PRO/conf/php5.6.40.ini"'
 alias php7='/Applications/MAMP/bin/php/php7.4.33/bin/php -c "/Library/Application Support/appsolute/MAMP PRO/conf/php7.4.33.ini"'
 #
+# Enable programmable sdb completion features.
+if [ -f ~/.sdb/.sdb-completion.bash ]; then
+ source ~/.sdb/.sdb-completion.bash
+fi
 alias php='/Applications/MAMP/bin/php/php8.2.13/bin/php -c "/Library/Application Support/appsolute/MAMP PRO/conf/php8.2.13.ini"'
 alias php-config='/Applications/MAMP/bin/php/php8.2.13/bin/php-config'
 alias phpdbg='/Applications/MAMP/bin/php/php8.2.13/bin/phpdbg'

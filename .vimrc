@@ -1,27 +1,88 @@
 " Shared setting betwen Vim, Neovim, Ideavim
 
-" line numbers
+" Set <space> as leader key
+let mapleader = " "
+let maplocalleader = " "
+
+" Enables line numbers 
 set nu
-" line numbers are relative
+" Enables relative line numbers
 set relativenumber
 
-" Signcolumn
+" Enables mouse reporting (for scrolling and resizing windows with the mouse)
+set mouse=a
+
+" Shows mode
+set showmode
+
+" Adds yanked text into system's clipboard
+" In MacOs and Windows both + and * registers point to system clipboard
+" Disabled to keep system clipboard and vim's clipboard separate
+" Use special keybindings to copy and paste to system clipboard
+" set clipboard^=unnamed,unnamedplus
+
+" Ensures indentation is consistent
+if has('linebreak')
+  set breakindent
+  let &showbreak = '↳ '
+  set breakindentopt=shift:0,min:20,sbr
+end
+
+" Undo settings
+let vimDir = '$HOME/.vim'
+if stridx(&runtimepath, expand(vimDir)) == -1
+  " vimDir is not on runtimepath, add it
+  let &runtimepath.=','.vimDir
+endif
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+  " Keep neovim and vim undo files separate because of incompatibility
+  if has('nvim')
+    let myUndoDir = expand(vimDir . '/undonvim')
+  else
+    let myUndoDir = expand(vimDir . '/undovim')
+  endif
+  " Create dirs
+  call system('mkdir ' . vimDir)
+  call system('mkdir ' . myUndoDir)
+  let &undodir = myUndoDir
+  set undofile
+endif
+
+" Search settings
+" Case-insensitive searching UNLESS \C or capital in search
+set ignorecase
+set smartcase
+" Highlight search results
+set hlsearch
+" Incremental search
+set incsearch
+
+" Keep signcolumnd on by default (for LSP, git, etc)
 set signcolumn=yes
 
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+" Decrease update time
+set updatetime=250
+set timeoutlen=300
 
-" Split configs
+" Ensures splits in right direction 
 set splitbelow
 set splitright
 
-" Search settings
-" set nohlsearch
-set hlsearch
-set incsearch
+" Sets how vim will display certain whitespace in the editor.
+set list
+set listchars=tab:»\ ,trail:·,precedes:←,extends:→,nbsp:␣
 
+" Set the tab size to 2 spaces
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+" Use spaces instead of tabs
+set expandtab
+
+
+
+" Indents next line if current is indented
 set autoindent
 set smartindent
 
@@ -33,30 +94,17 @@ set wrap
 set nolinebreak
 set nolist
 
-if has('linebreak')
-  set breakindent
-  let &showbreak = '↳ '
-  set breakindentopt=shift:0,min:20,sbr
-end
 
 " Hard wrap
 " set textwidth=120
 
-let mapleader = " "
 
-set mouse=a
 
 set termguicolors
 
 set scrolloff=3
 set isfname+=@-@
 
-" Addes yanked text into system's clipboard
-" if has("unnamedplus")
-"   set clipboard=unnamedplus
-" else
-"   set clipboard=unnamed
-" endif
 
 
 " Remap
@@ -177,3 +225,10 @@ augroup closeOnOpen
   autocmd!
   autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), "&filetype") != "netrw"|call <SID>CloseNetrw()|endif
 aug END
+
+" Close help with q or escape
+augroup help
+  autocmd!
+  autocmd FileType help nnoremap <buffer><silent> q :q<CR>
+  autocmd FileType help nnoremap <buffer><silent> <Esc> :q<CR>
+augroup END
