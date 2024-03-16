@@ -1,3 +1,5 @@
+" scriptencoding utf-8
+set encoding=utf-8
 " Shared setting betwen Vim, Neovim, Ideavim
 
 " SETTINGS
@@ -76,7 +78,7 @@ set splitright
 
 " Sets how vim will display certain whitespace in the editor.
 set list
-set listchars=tab:»\ ,trail:·,precedes:←,extends:→,nbsp:␣
+let &listchars="tab:»\ ,space:·,trail:·,extends:⟩,nbsp:␣"
 
 " Enables cursor line highlight groups
 set cursorline
@@ -94,10 +96,9 @@ set expandtab
 " Indents next line if current is indented
 set autoindent
 
-" Soft wrap
-set wrap
+" Soft wrap 
+set nowrap
 set nolinebreak
-set nolist
 
 " Hard wrap
 " set textwidth=120
@@ -112,6 +113,9 @@ set colorcolumn=80,100,120
 
 " Disable backup files
 set nobackup
+
+" Virtual edit
+set virtualedit=onemore
 
 " MAPPINGS
 
