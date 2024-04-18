@@ -30,4 +30,19 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
+
+
+  # Enable the touch-id authentication for sudo.
+  # security.pam.enableSudoTouchIdAuth = true;
+  # Enable the touch-id authentication for sudo via tmux reattach and in proper file
+  environment = {
+    etc."pam.d/sudo_local".text = ''
+      # Managed by Nix-Darwin
+      auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh 
+      auth       sufficient     pam_tid.so
+    '';
+  };
+
+  # Autohide the dock.
+  system.defaults.dock.autohide = true;
 }

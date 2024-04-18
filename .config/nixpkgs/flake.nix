@@ -67,10 +67,6 @@
             modules = [ ./hosts/mac-default/configuration.nix ];
           };
         };
-        # darwinPackages = self.darwinConfigurations = {
-        #   "Nicks-MacBook-Air".packages = [ self.packages.default ];
-        #   "Nicks-Mac-mini-disabled".packages = [ self.packages.default ];
-        # };
         # nixos config here
       };
 }
