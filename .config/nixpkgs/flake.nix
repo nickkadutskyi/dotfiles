@@ -12,8 +12,7 @@
 {
   description = "Default user environment packages";
   inputs = {
-    # nixpkgs.url = "github:NixOs/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOs/nixpkgs/master";
+    nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +26,6 @@
           # Basic terminal tools
             gnused # gnused on all platforms
             direnv # automatically switch environments in development directories
-            git
             # Utilities
             bat # colorized cat
             # Development
