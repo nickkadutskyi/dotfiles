@@ -1,3 +1,8 @@
+# Configure paths before loading the shell
+if [[ $SHLVL == 1 && ! -o LOGIN ]]; then
+    source ~/.zpath
+fi
+
 # Sets environmental variabes
 
 # Default editor
