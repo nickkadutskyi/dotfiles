@@ -60,7 +60,7 @@
             inherit inputs;
             modules = [ ./hosts/mac-default/configuration.nix ];
           };
-          "Nicks-Mac-mini-disabled" = nix-darwin.lib.darwinSystem {
+          "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
             inherit inputs;
             modules = [ ./hosts/mac-default/configuration.nix ];
           };
