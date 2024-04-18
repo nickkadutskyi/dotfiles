@@ -4,6 +4,10 @@
 #   nix profile install "$(readlink -f $HOME/.config/nixpkgs)"
 # To update the environment after changing this file or inputs, run:
 #   nix profile upgrade ".*"
+# To build nix-darwin system configurations first time, run:
+#   nix run nix-darwin -- switch --flake "$(readlink -f ~/.config/nixpkgs)"
+# To update nix-darwin system configurations after changing, run in the flake dir:
+#   darwin-rebuild switch --flake . 
 
 {
   description = "Default user environment packages";
