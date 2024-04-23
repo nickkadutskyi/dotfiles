@@ -25,10 +25,10 @@
           inherit (pkgs)
           # Basic terminal tools
             gnused # gnused on all platforms
-            direnv # automatically switch environments in development directories
             # Utilities
             bat # colorized cat
             # Development
+            devenv# development environment
             # Nix
             nixfmt-classic # format nix files
             nixpkgs-fmt # format nixpkgs files
