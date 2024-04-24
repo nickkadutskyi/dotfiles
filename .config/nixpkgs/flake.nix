@@ -58,11 +58,17 @@
         darwinConfigurations = {
           "Nicks-MacBook-Air" = nix-darwin.lib.darwinSystem {
             inherit inputs;
-            modules = [ ./hosts/mac-default/configuration.nix ];
+            modules = [ ./hosts/mac-default/configuration.nix ]
+              ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [])
+              ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [])
+              ++ [];
           };
           "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
             inherit inputs;
-            modules = [ ./hosts/mac-default/configuration.nix ];
+            modules = [ ./hosts/mac-default/configuration.nix ]
+              ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [])
+              ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [])
+              ++ [];
           };
         };
         # nixos config here
