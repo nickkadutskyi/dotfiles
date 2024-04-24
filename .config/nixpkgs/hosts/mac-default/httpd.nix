@@ -28,8 +28,8 @@ in
               "    Listen 80"
               )
     declare -a addAfterValue=(
-              "    DirectoryIndex index.html index.php"                
-              "    Listen 443"
+              "# nix-darwin: ${option}\n    DirectoryIndex index.html index.php"                
+              "# nix-darwin: ${option}\n    Listen 443"
               )
 
     ${if enabled then ''
@@ -41,7 +41,6 @@ in
         if [[ $(${sed} -n '/^'"''${addAfterKey[$i]}"'$/p' ${file}) && ! $(${sed} -n '/^'"''${addAfterKey[$i]}"'$/{:start \@'"''${addAfterValue[$i]}"'@!{N;b start};\,'"''${addAfterKey[$i]}"'\n'"''${addAfterValue[$i]}"',p}' ${file}) ]]; then
           echo "Adding ''${addAfterValue[$i]} after ''${addAfterKey[$i]}"
           ${sed} -i '\,^'"''${addAfterKey[$i]}"'$,a\
-      # nix-darwin: ${option}\
       '"''${addAfterValue[$i]}"'
           ' ${file}
         fi
