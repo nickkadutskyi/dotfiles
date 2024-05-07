@@ -53,7 +53,7 @@ ZSH_AUTOSUGGEST_P=/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zs
 HOME=${HOME:-'/Users/nick'}
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
 # Fuzzy search
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 # iTerm's shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

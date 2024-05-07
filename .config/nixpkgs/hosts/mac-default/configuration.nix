@@ -1,13 +1,38 @@
-{ pkgs, inputs, ... }: 
+{ pkgs, inputs, ... }:
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-  [ 
-    pkgs.btop
-    pkgs.gnugrep
-    pkgs.dnsmasq
-  ]; 
+  environment.systemPackages = with pkgs; [
+    # Activity Monitors
+    btop
+    htop
+
+    # Development
+    dnsmasq # For wildecard *.test for local development
+    neovim # Lightweight editor
+    git # Updated git instead of apple's git
+
+    # Tools
+    gnutar # gnu tar for consistent tar across systems
+    gnused # gnu sed for consistent sed across systems
+    gnugrep # gnu grep for consistent grep across systems
+    pdfgrep # for searching pdf files
+    ripgrep # for searching files
+    tmux # for multiplexing
+    tree # for directory structure
+    bat # for syntax highlighting
+    wget # for downloading
+    speedtest-cli # for checking internet speed
+    jq # for parsing json
+    wrk # for benchmarking http requests
+    dust # for disk usage
+    tcping-go # for checking tcp connection "tcping google.com 80"
+    fd # faster alternative to find
+    fzf # fuzzy finder
+  ];
+  environment.shellAliases = {
+    ll = "ls -la";
+  };
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
@@ -36,10 +61,10 @@
 
   # Enable the touch-id authentication for sudo via tmux reattach and in proper file
   environment.etc."pam.d/sudo_local".text = ''
-      # Managed by Nix-Darwin
-      auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh 
-      auth       sufficient     pam_tid.so
-    '';
+    # Managed by Nix-Darwin
+    auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh 
+    auth       sufficient     pam_tid.so
+  '';
 
   # Autohide the dock.
   system.defaults.dock.autohide = true;
