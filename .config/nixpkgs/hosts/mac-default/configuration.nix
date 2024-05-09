@@ -16,6 +16,8 @@
     gnutar # gnu tar for consistent tar across systems
     gnused # gnu sed for consistent sed across systems
     gnugrep # gnu grep for consistent grep across systems
+    coreutils-prefixed # gnu coreutils (gtimeout is required by snippety-helper)
+    fswatch # monitor a directory for changes (required by snippety-helper)
     pdfgrep # for searching pdf files
     ripgrep # for searching files
     tmux # for multiplexing

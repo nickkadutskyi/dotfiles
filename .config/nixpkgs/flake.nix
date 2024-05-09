@@ -62,8 +62,6 @@
           # Tools
           blueutil # control bluetooth (probably use in some script)
           duti # set default applications for document types and URL schemes
-          fswatch # monitor a directory for changes (required by snippety-helper)
-          coreutils-prefixed # GNU coreutils with prefix g (gtimeout is required by snippety-helper)
 
           # Development
           perl # updating built-in perl 
@@ -95,6 +93,7 @@
           inherit inputs;
           modules = [ ./hosts/mac-default/configuration.nix ]
           ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/snippety-agent.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
           ++ [ ];
         };
@@ -102,6 +101,7 @@
           inherit inputs;
           modules = [ ./hosts/mac-default/configuration.nix ]
           ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/snippety-agent.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
           ++ [ ];
         };
