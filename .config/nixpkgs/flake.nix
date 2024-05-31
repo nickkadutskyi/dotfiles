@@ -28,6 +28,7 @@
           # lua # For lua development and neovim configs
           lua54Packages.lua
           dart
+          php83Packages.composer # for PHP dev
 
           # Tools
           awscli2 # AWS CLI
@@ -92,16 +93,16 @@
         "Nicks-MacBook-Air" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [ ./hosts/mac-default/configuration.nix ]
-          ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [ ])
-          ++ (if true then [ ./hosts/mac-default/snippety-agent.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
           ++ [ ];
         };
         "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [ ./hosts/mac-default/configuration.nix ]
-          ++ (if true then [ ./hosts/mac-default/dnsmasq.nix ] else [ ])
-          ++ (if true then [ ./hosts/mac-default/snippety-agent.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
           ++ [ ];
         };

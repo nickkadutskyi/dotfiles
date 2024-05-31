@@ -121,7 +121,7 @@ alias vimdiff="nvim -d"
 
 # EPDS
 # List EPDS AWS EC2 Instances
-alias epds_ec2="aws ec2 describe-instances  --query 'Reservations[].Instances[?not_null(Tags[?Key==\`Name\`].Value)]|[].[State.Name,PrivateIpAddress,PublicIpAddress,InstanceId,Tags[?Key==\`Name\`].Value[]|[0]] | sort_by(@, &[3])' --output text |  sed '$!N;s/ / /'"
+alias epds_ec2="aws ec2 describe-instances  --query 'Reservations[].Instances[?not_null(Tags[?Key==\`Name\`].Value)]|[].[State.Name,PrivateIpAddress,PublicIpAddress,InstanceId,Tags[?Key==\`Name\`].Value[]|[0]] | sort_by(@, &[3])'  --output text |  sed '$!N;s/ / /'"
 
 # Other
 # Removes all Adobe stuff

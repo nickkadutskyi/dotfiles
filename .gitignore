@@ -11,17 +11,3 @@
 !README.md
 !.config/
 !.config/nixpkgs
-# !.config/nixpkgs/*
-# !.config/nixpkgs/hosts
-# !.config/nixpkgs/hosts/*
-# !.config/nixpkgs/hosts/mac-default
-# !.config/nixpkgs/hosts/mac-default/*
-# !.config/nixpkgs/flake.nix
-# !.config/nixpkgs/
-# !.config/nixpkgs/*
-# !.config/nixpkgs/
-# !.config/nixpkgs
-# !/.config/nixpkgs/flake.nix
-# !/.config/nixpkgs/*
-# !/.config/nixpkgs/
-# !/.config/nixpkgs

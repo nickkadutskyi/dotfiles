@@ -22,6 +22,11 @@ nnoremap <leader>fp :action FindInPath<CR>
 " Similar to Go to Buffer in my neovim setup
 nnoremap <leader>gb :action Switcher<CR>
 
+" Git
+nnoremap <leader>ggs :action ActivateCommitToolWindow<CR>
+nnoremap <leader>ggc :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>ggb :action Vcs.ShowTabbedFileHistory<CR>
+
 " View Modes
 nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
 
