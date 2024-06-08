@@ -23,12 +23,16 @@ in
               "LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so"
               "    DirectoryIndex index.html"
               )
+    declare -a addInTheEnd=(
+              "Timeout 600"
+              "ProxyTimeout 600"
+             )
     declare -a addAfterKey=(
               "    DirectoryIndex index.html"
               "    Listen 80"
               )
     declare -a addAfterValue=(
-              "# nix-darwin: ${option}\n    DirectoryIndex index.html index.php"                
+              "# nix-darwin: ${option}\n    DirectoryIndex index.html index.php"
               "# nix-darwin: ${option}\n    Listen 443"
               )
 
@@ -58,6 +62,17 @@ in
       # nix-darwin: ${option}\
       '"$i"'
           ' ${file}
+        fi
+      done
+
+      # ADDS CONFIGURATIONS IN THE END
+      for i in "''${addInTheEnd[@]}"
+      do 
+        if grep -q "''${i}" ${file}; then
+          echo "Config ''${i} is already in the file."
+        else
+          echo "Adding ''${i} in the end"
+          echo -e "# nix-darwin: ${option}\n$i" >> ${file}
         fi
       done
 
