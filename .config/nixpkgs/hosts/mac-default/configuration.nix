@@ -78,8 +78,4 @@
   programs.direnv.direnvrcExtra = ''
     export DIRENV_LOG_FORMAT=
   '';
-
-  environment.variables = {
-    TEST_VAR = "test";
-  };
 }
