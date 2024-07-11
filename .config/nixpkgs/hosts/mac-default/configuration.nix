@@ -73,4 +73,13 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.direnv.silent = true;
+  programs.direnv.loadInNixShell = true;
+  # to make it silent since .silent option doesn't work in IntelliJ Terminal
+  programs.direnv.direnvrcExtra = ''
+    export DIRENV_LOG_FORMAT=
+  '';
+
+  environment.variables = {
+    TEST_VAR = "test";
+  };
 }
