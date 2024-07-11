@@ -24,11 +24,14 @@
         defaultPackages = with pkgs; [
           # Development
           devenv # development environment
-          go
-          # lua # For lua development and neovim configs
-          lua54Packages.lua
+          go # Probably for gcloud
+          lua54Packages.lua # For lua development and neovim configs
           dart
-          php83Packages.composer # for PHP dev
+
+          # PHP Develpoment
+          php83 # PHP 8.3 (currently latest) to run symfony console completion
+          php83Packages.composer # to initate PHP projects
+          symfony-cli # for Symfony dev
 
           # Tools
           awscli2 # AWS CLI

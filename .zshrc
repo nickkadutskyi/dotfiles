@@ -25,8 +25,8 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # Brew zsh-completions package
 FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 # Google Cloud Platform (brew gcloud completion doesn't work)
-GCLOUD_COMPLETION="$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-[ -f "$GCLOUD_COMPLETION" ] && source "$GCLOUD_COMPLETION"
+# GCLOUD_COMPLETION="$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+# [ -f "$GCLOUD_COMPLETION" ] && source "$GCLOUD_COMPLETION"
 
 
 # INIT oh-my-zsh
