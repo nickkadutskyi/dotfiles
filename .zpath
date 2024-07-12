@@ -4,16 +4,12 @@ HOMEBREW_PREFIX=$([ -d "/opt/homebrew" ] && echo /opt/homebrew || echo /usr/loca
 [ -d $HOMEBREW_PREFIX ] && eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 # NVM
 export NVM_DIR="$HOME/.nvm"
-# PNPM
-export PNPM_HOME="/Users/nick/Library/pnpm"
 #zpath User's private binaries and scripts
 export PATH="$PATH:$HOME/bin"
 # Tizen CLI
 export PATH=/Users/nick/Tizen/tizen-studio/tools/ide/bin:$PATH
 # Rust related
 # [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
-# PNPM
-export PATH="$PNPM_HOME:$PATH"
 # Composer vendor binaries
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 # Ruby overwrites Ruby shipped with MacOs

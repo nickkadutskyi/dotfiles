@@ -26,7 +26,7 @@
           devenv # development environment
           go # Probably for gcloud
           lua54Packages.lua # For lua development and neovim configs
-          dart
+          # dart # disabled due to conflict with composer
 
           # PHP Develpoment
           php83 # PHP 8.3 (currently latest) to run symfony console completion
@@ -40,6 +40,8 @@
           exercism
           imagemagick
           stylua
+          google-cloud-sdk # Google Cloud SDK
+          pnpm
 
           # Nix
           nixfmt-classic # format nix files
