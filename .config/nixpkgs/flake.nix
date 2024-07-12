@@ -25,28 +25,34 @@
           # Development
           devenv # development environment
           go # Probably for gcloud
-          lua54Packages.lua # For lua development and neovim configs
-          # dart # disabled due to conflict with composer
 
           # PHP Develpoment
           php83 # PHP 8.3 (currently latest) to run symfony console completion
-          php83Packages.composer # to initate PHP projects
+          php83Packages.composer # package manager for PHP (to init PHP projects)
           symfony-cli # for Symfony dev
+
+          # JavaScript Development
+          pnpm # package manager for JavaScript
+          # dart # disabled due to conflict with composer
+
+          # Lua Development
+          lua54Packages.lua # For lua development and neovim configs
+          stylua # lua formatter
 
           # Tools
           awscli2 # AWS CLI
+          google-cloud-sdk # Google Cloud SDK
           ffmpeg # for video conversion
           dos2unix # convert text files with different line breaks
-          exercism
-          imagemagick
-          stylua
-          google-cloud-sdk # Google Cloud SDK
-          pnpm
+          imagemagick # for image conversion
 
           # Nix
           nixfmt-classic # format nix files
           nixpkgs-fmt # format nixpkgs files
           pandoc # for markdown conversion
+
+          # Misc
+          exercism # for coding exercises
 
           # Coming from Homebrew but do not know why I need them
           # automake
