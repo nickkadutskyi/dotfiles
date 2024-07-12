@@ -9,7 +9,7 @@ export PATH="$PATH:$HOME/bin"
 # Tizen CLI
 export PATH=/Users/nick/Tizen/tizen-studio/tools/ide/bin:$PATH
 # Rust related
-# [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 # Composer vendor binaries
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 # Ruby overwrites Ruby shipped with MacOs

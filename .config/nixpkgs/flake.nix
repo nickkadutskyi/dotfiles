@@ -50,6 +50,7 @@
           nixfmt-classic # format nix files
           nixpkgs-fmt # format nixpkgs files
           pandoc # for markdown conversion
+          nil # nix lsp server
 
           # Misc
           exercism # for coding exercises
