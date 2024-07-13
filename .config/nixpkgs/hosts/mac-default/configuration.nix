@@ -31,8 +31,14 @@
     tcping-go # for checking tcp connection "tcping google.com 80"
     fd # faster alternative to find
     fzf # fuzzy finder
+
+    # Misc
+    zsh-powerlevel10k
+    zsh-autosuggestions
   ];
-  environment.shellAliases = {  };
+  # environment.shellAliases = {
+  #   vi = "nvim";
+  # };
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
@@ -43,7 +49,13 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      promptInit = "
+        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      ";
+    };
     bash.enable = false;
     fish.enable = false;
   };
@@ -78,4 +90,13 @@
   programs.direnv.direnvrcExtra = ''
     export DIRENV_LOG_FORMAT=
   '';
+
+  homebrew = {
+    enable = true;
+    casks = [
+      { name = "swiftdefaultappsprefpane"; }
+      { name = "sloth"; }
+      { name = "finicky"; }
+    ];
+  };
 }

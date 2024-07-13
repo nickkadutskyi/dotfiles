@@ -25,6 +25,7 @@
           # Development
           devenv # development environment
           go # Probably for gcloud
+          dart-sass # for sass to css conversion
 
           # PHP Develpoment
           php83 # PHP 8.3 (currently latest) to run symfony console completion
@@ -33,6 +34,7 @@
 
           # JavaScript Development
           pnpm # package manager for JavaScript
+          nodePackages_latest.nodejs
           # dart # disabled due to conflict with composer
 
           # Lua Development
@@ -45,15 +47,16 @@
           ffmpeg # for video conversion
           dos2unix # convert text files with different line breaks
           imagemagick # for image conversion
+          pandoc # for markdown conversion
 
           # Nix
           nixfmt-classic # format nix files
           nixpkgs-fmt # format nixpkgs files
-          pandoc # for markdown conversion
           nil # nix lsp server
 
           # Misc
           exercism # for coding exercises
+          zsh-completions
 
           # Coming from Homebrew but do not know why I need them
           # automake
