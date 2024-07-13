@@ -11,6 +11,7 @@
     dnsmasq # For wildecard *.test for local development
     neovim # Lightweight editor
     git # Updated git instead of apple's git
+    wp-cli # Wordpress CLI defined system wide because of the conflict with php
 
     # Tools
     gnutar # gnu tar for consistent tar across systems
