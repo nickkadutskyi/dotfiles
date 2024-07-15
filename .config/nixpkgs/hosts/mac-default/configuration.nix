@@ -169,6 +169,7 @@
       "microsoft-teams"
       # "paragon-ntfs" # not required on all devices
       "obsidian"
+      "openoffice"
       "protonvpn"
       "rapidapi"
       "raycast"
