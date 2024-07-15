@@ -92,12 +92,110 @@
     export DIRENV_LOG_FORMAT=
   '';
 
+  environment.variables.HOMEBREW_NO_ANALYTICS = "1";
   homebrew = {
     enable = true;
+    masApps = {
+      "Slack for Desktop" = 803453959;
+      "The Unarchiver" = 425424353;
+      "The Archive Browser" = 510232205;
+      "Telegram" = 747648890;
+      "Evernote" = 406056744;
+      "Blackmagic Disk Speed Test" = 425264550;
+      "Microsoft Remote Desktop" = 1295203466;
+      "WhatsApp Messenger" = 310633997;
+      "Amazon Kindle" = 302584613;
+      "Wayback Machine" = 1472432422;
+      "iA Writer" = 775737590;
+      "DjVu Viewer + DjVu to PDF" = 755261884;
+      "1Blocker - Ad Blocker" = 1365531024;
+      "Parcel - Delivery Tracking" = 639968404;
+      "Reeder 5." = 1529448980;
+      "Paste - Endless Clipboard" = 967805235;
+      "1Password for Safari" = 1569813296;
+      "BetterJSON for Safari" = 1511935951;
+      "BetterML for Safari" = 1556487002;
+      "OmniGraffle 7" = 1142578753;
+      "Easy CSV Editor" = 1171346381;
+      "Snippety - Snippets Manager" = 1530751461;
+      "Redirect Web for Safari" = 1571283503;
+      "#blockit: Block distractions" = 1492879257;
+      "Numbers" = 409203825;
+      "Pages" = 409201541;
+      "Keynote" = 409183694;
+      "Xcode" = 497799835;
+      "Apple Developer" = 640199958;
+      "Ember - Temperature Matters" = 1147470931;
+      "Fonts Ninja" = 1480227114;
+    };
     casks = [
-      { name = "swiftdefaultappsprefpane"; }
-      { name = "sloth"; }
-      { name = "finicky"; }
+      "swiftdefaultappsprefpane"
+      "sloth" # for monitoring network and disk usage
+      "finicky"
+      "1password"
+      "appcleaner"
+      "jetbrains-toolbox" 
+      # "adobe-creative-cloud" # manages adobe apps; not required on all devices
+      "amazon-chime"
+      "anydesk"
+      "balenaetcher"
+      "betterzip"
+      "bibdesk"
+      "calibre"
+      "cleanshot"
+      "clickup"
+      "core-tunnel"
+      # "crossover" # not required on all devices
+      "daisydisk"
+      "dash"
+      "discord"
+      "docker"
+      "dropbox"
+      "element"
+      "firefox"
+      "google-chrome"
+      "google-drive"
+      "gpg-suite"
+      "hhkb"
+      "hazel"
+      "iina"
+      "jiggler"
+      "karabiner-elements"
+      "lastpass"
+      "launchcontrol"
+      "little-snitch"
+      "logi-options-plus"
+      "microsoft-edge"
+      "microsoft-teams"
+      # "paragon-ntfs" # not required on all devices
+      "obsidian"
+      "protonvpn"
+      "rapidapi"
+      "raycast"
+      "shortcutdetective"
+      "sketch"
+      "splashtop-business"
+      "spotify"
+      "steam"
+      "teamviewer"
+      "timing"
+      "tor-browser"
+      "transmission"
+      "transmit"
+      "tresorit"
+      "typeface"
+      "veracrypt"
+      "viber"
+      "virtualbox"
+      "vlc"
+      "vmware-fusion" # not required on all devices
+      "webex"
+      "wireshark"
+      "zoom"
     ];
+    brews = [];
+    onActivation = {
+      cleanup = "zap"; # Removes unlisted casks and brews.
+    };
   };
 }
