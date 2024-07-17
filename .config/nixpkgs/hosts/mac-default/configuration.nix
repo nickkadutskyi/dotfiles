@@ -96,62 +96,60 @@
   homebrew = {
     enable = true;
     masApps = {
-      "Slack for Desktop" = 803453959;
-      "The Unarchiver" = 425424353;
-      "The Archive Browser" = 510232205;
-      "Telegram" = 747648890;
-      "Evernote" = 406056744;
-      "Blackmagic Disk Speed Test" = 425264550;
-      "Microsoft Remote Desktop" = 1295203466;
-      "WhatsApp Messenger" = 310633997;
-      "Amazon Kindle" = 302584613;
-      "Wayback Machine" = 1472432422;
-      "iA Writer" = 775737590;
-      "DjVu Viewer + DjVu to PDF" = 755261884;
+      "#blockit: Block distractions" = 1492879257;
       "1Blocker - Ad Blocker" = 1365531024;
-      "Parcel - Delivery Tracking" = 639968404;
-      "Reeder 5." = 1529448980;
-      "Paste - Endless Clipboard" = 967805235;
       "1Password for Safari" = 1569813296;
+      "Amazon Kindle" = 302584613;
+      "Apple Developer" = 640199958;
       "BetterJSON for Safari" = 1511935951;
       "BetterML for Safari" = 1556487002;
-      "OmniGraffle 7" = 1142578753;
+      "Blackmagic Disk Speed Test" = 425264550;
+      "DjVu Viewer + DjVu to PDF" = 755261884;
       "Easy CSV Editor" = 1171346381;
-      "Snippety - Snippets Manager" = 1530751461;
-      "Redirect Web for Safari" = 1571283503;
-      "#blockit: Block distractions" = 1492879257;
-      "Numbers" = 409203825;
-      "Pages" = 409201541;
-      "Keynote" = 409183694;
-      "Xcode" = 497799835;
-      "Apple Developer" = 640199958;
-      "Ember - Temperature Matters" = 1147470931;
+      "Evernote" = 406056744;
       "Fonts Ninja" = 1480227114;
+      "iA Writer" = 775737590;
+      "Keynote" = 409183694;
+      "Microsoft Remote Desktop" = 1295203466;
+      "Numbers" = 409203825;
+      "OmniGraffle 7" = 1142578753;
+      "Pages" = 409201541;
+      "Parcel - Delivery Tracking" = 639968404;
+      "Paste - Endless Clipboard" = 967805235;
+      "PayPal Honey for Safari" = 1472777122;
+      "Redirect Web for Safari" = 1571283503;
+      "Reeder 5." = 1529448980;
+      "Slack for Desktop" = 803453959;
+      "Snippety - Snippets Manager" = 1530751461;
+      "Telegram" = 747648890;
+      "The Unarchiver" = 425424353;
+      "The Archive Browser" = 510232205;
+      "WhatsApp Messenger" = 310633997;
+      "Wayback Machine" = 1472432422;
+      "Xcode" = 497799835;
     };
     casks = [
-      "swiftdefaultappsprefpane"
-      "sloth" # for monitoring network and disk usage
-      "finicky"
       "1password"
-      "appcleaner"
-      "jetbrains-toolbox" 
-      # "adobe-creative-cloud" # manages adobe apps; not required on all devices
+      "adobe-creative-cloud"
       "amazon-chime"
       "anydesk"
+      "appcleaner"
       "balenaetcher"
       "betterzip"
+      "bettertouchtool"
       "bibdesk"
       "calibre"
+      # "chromium 66" # not present in any package manager so handle it directly
       "cleanshot"
       "clickup"
       "core-tunnel"
-      # "crossover" # not required on all devices
       "daisydisk"
       "dash"
       "discord"
       "docker"
       "dropbox"
       "element"
+      "finicky"
       "firefox"
       "google-chrome"
       "google-drive"
@@ -159,25 +157,30 @@
       "hhkb"
       "hazel"
       "iina"
+      "iterm2@beta"
+      "itermai"
+      "jetbrains-toolbox" 
       "jiggler"
       "karabiner-elements"
       "lastpass"
       "launchcontrol"
       "little-snitch"
       "logi-options-plus"
+      # "mamp" # switch al lprojects to devenv.sh and nix flakes and get rid of mamp
       "microsoft-edge"
       "microsoft-teams"
-      # "paragon-ntfs" # not required on all devices
       "obsidian"
       "openoffice"
       "protonvpn"
       "rapidapi"
       "raycast"
       "shortcutdetective"
+      "sf-symbols"
       "sketch"
+      "sloth" # for monitoring network and disk usage
       "splashtop-business"
       "spotify"
-      "steam"
+      "swiftdefaultappsprefpane"
       "teamviewer"
       "timing"
       "tor-browser"
@@ -185,18 +188,21 @@
       "transmit"
       "tresorit"
       "typeface"
+      # "upwork" # missing from any package managers so handling it directly
       "veracrypt"
       "viber"
-      "virtualbox"
+      "virtualbox@beta"
       "vlc"
-      "vmware-fusion" # not required on all devices
       "webex"
       "wireshark"
+      "xquartz"
       "zoom"
     ];
     brews = [];
     onActivation = {
       cleanup = "zap"; # Removes unlisted casks and brews.
+      autoUpdate = true; # Updates Homebrew and all installed packages.
+      upgrade = true; # Upgrades outdated packages.
     };
   };
 }

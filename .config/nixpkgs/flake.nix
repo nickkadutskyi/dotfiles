@@ -115,7 +115,10 @@
         };
         "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
           inherit inputs;
-          modules = [ ./hosts/mac-default/configuration.nix ]
+          modules = [
+            ./hosts/mac-default/configuration.nix
+            ./hosts/nicks-mac-mini/configuration.nix
+          ]
           ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
