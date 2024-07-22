@@ -57,19 +57,6 @@
           # Misc
           exercism # for coding exercises
           zsh-completions
-
-          # Coming from Homebrew but do not know why I need them
-          # automake
-          # db # berkeley-db in brew
-          # bfg-repo-cleaner # bfg in brew 
-          # cmake # probably needed this for nvim
-          # python312Packages.cryptography # cryptography in brew
-          # python312Packages.cffi # cffi in brew
-          # cmocka
-          # fpc # Free Pascal Compiler
-          # guile
-          # mkcert
-          # git-filter-repo
         ];
         linuxPackages = with pkgs; [
           git # provide git on Linux 

@@ -122,9 +122,6 @@
       "Slack for Desktop" = 803453959;
       "Snippety - Snippets Manager" = 1530751461;
       "Telegram" = 747648890;
-      "The Unarchiver" = 425424353;
-      "The Archive Browser" = 510232205;
-      "WhatsApp Messenger" = 310633997;
       "Wayback Machine" = 1472432422;
       "Xcode" = 497799835;
     };
@@ -134,7 +131,6 @@
       "amazon-chime"
       "anydesk"
       "appcleaner"
-      "balenaetcher"
       "betterzip"
       "bettertouchtool"
       "bibdesk"
@@ -149,7 +145,7 @@
       "docker"
       "dropbox"
       "element"
-      "finicky"
+      # "finicky"
       "firefox"
       "google-chrome"
       "google-drive"
@@ -160,17 +156,14 @@
       "iterm2@beta"
       "itermai"
       "jetbrains-toolbox" 
-      "jiggler"
       "karabiner-elements"
       "lastpass"
-      "launchcontrol"
       "little-snitch"
       "logi-options-plus"
       # "mamp" # switch al lprojects to devenv.sh and nix flakes and get rid of mamp
       "microsoft-edge"
       "microsoft-teams"
       "obsidian"
-      "openoffice"
       "protonvpn"
       "rapidapi"
       "raycast"
@@ -182,7 +175,6 @@
       "spotify"
       "swiftdefaultappsprefpane"
       "teamviewer"
-      "timing"
       "tor-browser"
       "transmission"
       "transmit"
@@ -192,7 +184,6 @@
       "veracrypt"
       "viber"
       "virtualbox@beta"
-      "vlc"
       "webex"
       "wireshark"
       "xquartz"
