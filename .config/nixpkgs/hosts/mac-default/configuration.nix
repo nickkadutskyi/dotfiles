@@ -71,7 +71,6 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-
   # Enable the touch-id authentication for sudo via tmux reattach and in proper file
   environment.etc."pam.d/sudo_local".text = ''
     # Managed by Nix-Darwin
@@ -79,8 +78,11 @@
     auth       sufficient     pam_tid.so
   '';
 
-  # Autohide the dock.
+  # TODO Move it to Home Manager or similar.
+  # Defaults
   system.defaults.dock.autohide = true;
+  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
+  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
 
   # Enables direnv to automatically switch environments in project directories.
   programs.direnv.enable = true;
@@ -109,6 +111,7 @@
       "Evernote" = 406056744;
       "Fonts Ninja" = 1480227114;
       "iA Writer" = 775737590;
+      "Kagi for Safari" = 1622835804;
       "Keynote" = 409183694;
       "Microsoft Remote Desktop" = 1295203466;
       "Numbers" = 409203825;
@@ -147,7 +150,10 @@
       "element"
       # "finicky"
       "firefox"
-      "google-chrome"
+      {
+        name = "google-chrome";
+        greedy = true;
+      }
       "google-drive"
       "gpg-suite"
       "hhkb"
@@ -164,6 +170,7 @@
       "microsoft-edge"
       "microsoft-teams"
       "obsidian"
+      "orion"
       "protonvpn"
       "rapidapi"
       "raycast"
@@ -194,6 +201,10 @@
       cleanup = "zap"; # Removes unlisted casks and brews.
       autoUpdate = true; # Updates Homebrew and all installed packages.
       upgrade = true; # Upgrades outdated packages.
+      extraFlags = [
+        "--verbose"
+        "--force"
+      ];
     };
   };
 }
