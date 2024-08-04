@@ -39,6 +39,7 @@
 
           # Lua Development
           lua54Packages.lua # For lua development and neovim configs
+          lua54Packages.luarocks # lua package manager
           stylua # lua formatter
 
           # Tools
