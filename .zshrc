@@ -69,11 +69,13 @@ alias iplan="ifconfig en0 inet | grep 'inet ' | awk ' { print \$2 } '"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print \$1'"
 alias ip4a="dig +short -4 myip.opendns.com @resolver4.opendns.com"
 alias ip6a="dig +short -6 myip.opendns.com @resolver1.ipv6-sandbox.opendns.com AAAA"
-# Neovim
-alias vi="nvim"
-alias vim="nvim"
-alias view="nvim -R"
-alias vimdiff="nvim -d"
+# Neovim if exists
+if type nvim > /dev/null; then
+  alias vi="nvim"
+  alias vim="nvim"
+  alias view="nvim -R"
+  alias vimdiff="nvim -d"
+fi
 
 # EPDS
 # List EPDS AWS EC2 Instances
