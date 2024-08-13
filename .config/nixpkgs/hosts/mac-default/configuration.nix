@@ -32,6 +32,8 @@
     tcping-go # for checking tcp connection "tcping google.com 80"
     fd # faster alternative to find
     fzf # fuzzy finder
+    # yt-dlp # youtube video downloader
+    python311Packages.yt-dlp
 
     # Misc
     zsh-powerlevel10k
@@ -190,7 +192,6 @@
       # "upwork" # missing from any package managers so handling it directly
       "veracrypt"
       "viber"
-      "virtualbox@beta"
       "webex"
       "wireshark"
       "xquartz"
