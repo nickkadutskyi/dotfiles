@@ -1,5 +1,9 @@
 { pkgs, inputs, ... }:
 {
+  users.users.nick = {
+    name = "nick";
+    home = "/Users/nick";
+  };
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -79,12 +83,6 @@
     auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh 
     auth       sufficient     pam_tid.so
   '';
-
-  # TODO Move it to Home Manager or similar.
-  # Defaults
-  system.defaults.dock.autohide = true;
-  system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
-  system.defaults.NSGlobalDomain.AppleShowAllExtensions = true;
 
   # Enables direnv to automatically switch environments in project directories.
   programs.direnv.enable = true;
