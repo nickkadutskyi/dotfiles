@@ -183,7 +183,7 @@ function! ToggleVimExplorer()
   " ID of the window before the switch to netrw
   let g:window_id_before_netrw = win_getid()
   if exists("t:expl_buf_num")
-      Lexplore
+      call s:CloseNetrw()
   else
       exec '1wincmd w'
       Lexplore
@@ -193,11 +193,14 @@ function! ToggleVimExplorer()
   endif
 endfunction
 
-nmap <leader>fb :call ToggleVimExplorer()<CR><CR>
+nmap <leader>fb :call ToggleVimExplorer()<CR>
 
 function! s:CloseNetrw() abort
   for bufn in range(1, bufnr('$'))
     if bufexists(bufn) && getbufvar(bufn, '&filetype') ==# 'netrw'
+      if exists("t:expl_buf_num")
+        unlet t:expl_buf_num
+      endif
       silent! execute 'bwipeout ' . bufn
       if getline(2) =~# '^" Netrw '
         silent! bwipeout

@@ -78,7 +78,7 @@
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
   targets.darwin.defaults = {
-    "com.apple.dock".autohide = false;
+    "com.apple.dock".autohide = true;
     NSGlobalDomain.AppleShowAllExtensions = true;
     # Currently doesn't work
     NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = true;
