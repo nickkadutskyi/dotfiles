@@ -15,7 +15,6 @@
     dnsmasq # For wildecard *.test for local development
     neovim # Lightweight editor
     git # Updated git instead of apple's git
-    wp-cli # Wordpress CLI defined system wide because of the conflict with php
 
     # Tools
     gnutar # gnu tar for consistent tar across systems
@@ -150,10 +149,7 @@
       "element"
       # "finicky"
       "firefox"
-      {
-        name = "google-chrome";
-        greedy = true;
-      }
+      "google-chrome"
       "google-drive"
       "gpg-suite"
       "hhkb"
@@ -161,11 +157,11 @@
       "iina"
       "iterm2@beta"
       "itermai"
-      "jetbrains-toolbox" 
+      "jetbrains-toolbox"
       "karabiner-elements"
       "lastpass"
       "little-snitch"
-      "logi-options-plus"
+      # "logi-options-plus" # deletes/installs on each switch so commenting this out for now
       # "mamp" # switch al lprojects to devenv.sh and nix flakes and get rid of mamp
       "microsoft-edge"
       "microsoft-teams"
@@ -195,7 +191,7 @@
       "xquartz"
       "zoom"
     ];
-    brews = [];
+    brews = [ ];
     onActivation = {
       cleanup = "zap"; # Removes unlisted casks and brews.
       autoUpdate = true; # Updates Homebrew and all installed packages.

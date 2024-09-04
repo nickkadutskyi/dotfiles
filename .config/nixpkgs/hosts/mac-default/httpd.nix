@@ -18,6 +18,7 @@ in
               "LoadModule proxy_wstunnel_module libexec/apache2/mod_proxy_wstunnel.so"
               "LoadModule proxy_balancer_module libexec/apache2/mod_proxy_balancer.so"
               "LoadModule proxy_ajp_module libexec/apache2/mod_proxy_ajp.so"
+              "LoadModule proxy_connect_module libexec/apache2/mod_proxy_connect.so"
               )
     declare -a apacheModulesDisable=(
               "LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so"
