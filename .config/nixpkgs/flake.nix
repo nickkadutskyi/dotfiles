@@ -1,24 +1,28 @@
 # To build nix-darwin system configurations first time, run:
-#   nix run nix-darwin -- switch --flake "$(readlink -f ~/.config/nixpkgs)"
+#   nix run nix-darwin -- switch --flake "path:$(readlink -f ~/.config/nixpkgs)"
 # To update nix-darwin system configurations after changing, run in the flake dir:
-#   darwin-rebuild switch --flake . 
+#   darwin-rebuild switch --flake path:~/.config/nixpkgs 
 
 {
   description = "Default user environment packages";
   inputs = {
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nix-darwin, home-manager }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, determinate, ... }@inputs:
     {
       # darwin system config here
       darwinConfigurations = {
         "Nicks-MacBook-Air" = nix-darwin.lib.darwinSystem {
           inherit inputs;
-          modules = [ ./hosts/mac-default/configuration.nix ]
+          modules = [
+              determinate.darwinModules.default
+              ./hosts/mac-default/configuration.nix 
+            ]
             ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
             ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
             ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
@@ -39,6 +43,7 @@
         "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [
+            determinate.darwinModules.default
             ./hosts/mac-default/configuration.nix
             ./hosts/nicks-mac-mini/configuration.nix
           ]

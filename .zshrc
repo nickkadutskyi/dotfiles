@@ -34,7 +34,7 @@ HISTSIZE=1000000
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # Fuzzy search
-eval "$(fzf --zsh)"
+[ -x "$(command -v fzf)" ] && eval "$(fzf --zsh)"
 
 # FUNCTIONS
 
