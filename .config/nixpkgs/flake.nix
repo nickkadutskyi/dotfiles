@@ -20,30 +20,30 @@
         "Nicks-MacBook-Air" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [
-              determinate.darwinModules.default
-              ./hosts/mac-default/configuration.nix 
-            ]
-            ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
-            ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
-            ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
-            ++
-            [
-              home-manager.darwinModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = false;
-                home-manager.users = {
-                  nick.imports = [ ./hosts/mac-default/home.nix ];
-                };
-              }
-            ]
-            ++
-            [ ];
+            # determinate.darwinModules.default
+            ./hosts/mac-default/configuration.nix
+          ]
+          ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
+          ++ (if true then [ ./hosts/mac-default/httpd.nix ] else [ ])
+          ++
+          [
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = false;
+              home-manager.users = {
+                nick.imports = [ ./hosts/mac-default/home.nix ];
+              };
+            }
+          ]
+          ++
+          [ ];
         };
         "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [
-            determinate.darwinModules.default
+            # determinate.darwinModules.default
             ./hosts/mac-default/configuration.nix
             ./hosts/nicks-mac-mini/configuration.nix
           ]
