@@ -135,7 +135,7 @@
       "Snippety - Snippets Manager" = 1530751461;
       "Telegram" = 747648890;
       "Wayback Machine" = 1472432422;
-      "Xcode" = 497799835;
+      # "Xcode" = 497799835;
     };
     casks = [
       "1password"
