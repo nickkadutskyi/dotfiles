@@ -1,10 +1,5 @@
 { config, pkgs, ... }:
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  # home.username = "nick";
-  # home.homeDirectory = "/home/nick";
-
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # Development
@@ -51,25 +46,17 @@
 
     # Fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) # Configures main font
-  ] ++ (
-    if (pkgs.lib.strings.hasInfix "linux" system) then
-      [
-        git
-      ]
-    else
-      [ ]
-  ) ++ (
-    if (pkgs.lib.strings.hasInfix "darwin" system) then
-      [
-        # Tools
-        blueutil # control bluetooth (probably use in some script)
-        duti # set default applications for document types and URL schemes
 
-        # Development
-        perl # updating built-in perl 
-      ]
-    else
-      [ ]
+  ] ++ (pkgs.lib.optionals (pkgs.lib.strings.hasInfix "linux" system)
+    [
+      git
+    ]
+  ) ++ (pkgs.lib.optionals (pkgs.lib.strings.hasInfix "darwin" system)
+    [
+      blueutil # control bluetooth (probably use in some script)
+      duti # set default applications for document types and URL schemes
+      perl # updating built-in perl 
+    ]
   );
 
   fonts.fontconfig.enable = true;
@@ -82,10 +69,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "24.05";
-
-  # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
+  home.stateVersion = "24.11";
 
   home.file =
     let
@@ -315,5 +299,34 @@
       ShowPathbar = true;
       ShowStatusBar = true;
     };
+
+    # Keyboard Shortucts
+    "com.apple.symbolichotkeys" = {
+      # Option + 1/2/3 to switch between Desktops
+      AppleSymbolicHotKeys = {
+        "118" = {
+          enabled = true;
+          value = {
+            parameters = [ 49 18 524288 ];
+            type = "standard";
+          };
+        };
+        "119" = {
+          enabled = true;
+          value = {
+            parameters = [ 50 19 524288 ];
+            type = "standard";
+          };
+        };
+        "120" = {
+          enabled = true;
+          value = {
+            parameters = [ 51 20 524288 ];
+            type = "standard";
+          };
+        };
+      };
+    };
+
   };
 }
