@@ -234,6 +234,171 @@
   targets.darwin.defaults = {
     "com.apple.dock" = {
       autohide = true;
+      "persistent-apps" = [
+        {
+          GUID = 3016036810;
+          "tile-data" = {
+            "bundle-identifier" = "com.apple.iCal";
+            "dock-extra" = 1;
+            "file-data" = {
+              "_CFURLString" = "file:///System/Applications/Calendar.app/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Calendar";
+            "file-mod-date" = 3807236824;
+            "file-type" = 41;
+            "is-beta" = 0;
+            "parent-mod-date" = 3807236824;
+          };
+          "tile-type" = "file-tile";
+        }
+        {
+          GUID = 3983927002;
+          "tile-data" = {
+            "bundle-identifier" = "pro.writer.mac";
+            "dock-extra" = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Applications/iA%20Writer.app/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "iA Writer";
+            "file-mod-date" = 156628376039959;
+            "file-type" = 41;
+            "is-beta" = 0;
+            "parent-mod-date" = 248111184366845;
+          };
+          "tile-type" = "file-tile";
+        }
+        {
+          GUID = 2502778024;
+          "tile-data" = {
+            "bundle-identifier" = "com.apple.mail";
+            "dock-extra" = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///System/Applications/Mail.app/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Mail";
+            "file-mod-date" = 3808414457;
+            "file-type" = 41;
+            "is-beta" = 0;
+            "parent-mod-date" = 3808414457;
+          };
+          "tile-type" = "file-tile";
+        }
+        {
+          GUID = 714452850;
+          "tile-data" = {
+            "bundle-identifier" = "ru.keepcoder.Telegram";
+            "dock-extra" = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Applications/Telegram.app/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Telegram";
+            "file-mod-date" = 114026600348085;
+            "file-type" = 41;
+            "is-beta" = 0;
+            "parent-mod-date" = 136841467249233;
+          };
+          "tile-type" = "file-tile";
+        }
+        {
+          GUID = 1305831930;
+          "tile-data" = {
+            "bundle-identifier" = "com.apple.ScreenContinuity";
+            "dock-extra" = 1;
+            "file-data" = {
+              "_CFURLString" = "file:///System/Applications/iPhone%20Mirroring.app/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "iPhone Mirroring";
+            "file-mod-date" = 3807236824;
+            "file-type" = 41;
+            "is-beta" = 0;
+            "parent-mod-date" = 3807236824;
+          };
+          "tile-type" = "file-tile";
+        }
+      ];
+      "persistent-others" = [
+        {
+          GUID = 354663587;
+          "tile-data" = {
+            arrangement = 2;
+            displayas = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Users/nick/Desktop/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Desktop";
+            "file-mod-date" = 3807722698;
+            "file-type" = 2;
+            "is-beta" = 0;
+            "parent-mod-date" = 261124935269833;
+            preferreditemsize = "-1";
+            showas = 0;
+          };
+          "tile-type" = "directory-tile";
+        }
+        {
+          GUID = 3715713668;
+          "tile-data" = {
+            arrangement = 2;
+            displayas = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Users/nick/Documents/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Documents";
+            "file-mod-date" = 3808363796;
+            "file-type" = 2;
+            "is-beta" = 0;
+            "parent-mod-date" = 261124935269833;
+            preferreditemsize = "-1";
+            showas = 0;
+          };
+          "tile-type" = "directory-tile";
+        }
+        {
+          GUID = 2502778041;
+          "tile-data" = {
+            arrangement = 2;
+            displayas = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Users/nick/Downloads/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Downloads";
+            "file-mod-date" = 176612863732546;
+            "file-type" = 2;
+            "is-beta" = 0;
+            "parent-mod-date" = 261124935269833;
+            preferreditemsize = "-1";
+            showas = 1;
+          };
+          "tile-type" = "directory-tile";
+        }
+        {
+          GUID = 3715713667;
+          "tile-data" = {
+            arrangement = 4;
+            displayas = 0;
+            "file-data" = {
+              "_CFURLString" = "file:///Users/nick/Library/Mobile%20Documents/com~apple~CloudDocs/Screenshots/";
+              "_CFURLStringType" = 15;
+            };
+            "file-label" = "Screenshots";
+            "file-mod-date" = 3808512343;
+            "file-type" = 2;
+            "is-beta" = 0;
+            "parent-mod-date" = 246848453805355;
+            preferreditemsize = "-1";
+            showas = 1;
+          };
+          "tile-type" = "directory-tile";
+        }
+      ];
     };
 
     NSGlobalDomain = {
