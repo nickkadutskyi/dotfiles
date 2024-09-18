@@ -469,13 +469,7 @@
       # };
     };
 
-    "com.apple.mail" = {
-      # backslashes don't work properly thus setting this in nix-darwin
-      # NSUserKeyEquivalents = {
-      #   # "\\033Mail\\033Services\\033Move to Mailbox" = "@^m";
-      #   "Paste as Quotation" = "@^v";
-      # };
-    };
+    "com.apple.mail" = { };
 
     # Keyboard Shortucts
     "com.apple.symbolichotkeys" = {
