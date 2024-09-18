@@ -1,4 +1,4 @@
-# To build nix-darwin system configurations first time, run:
+
 #   nix run nix-darwin -- switch --flake "path:$(readlink -f ~/.config/nixpkgs)"
 # To update nix-darwin system configurations after changing, run in the flake dir:
 #   darwin-rebuild switch --flake path:~/.config/nixpkgs 

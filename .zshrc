@@ -17,7 +17,7 @@ zstyle ':omz:plugins:nvm' lazy yes
 # Pre oh-my-zsh user configuration
 
 # INIT oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+[[ ! -f $ZSH/oh-my-zsh.sh ]] || source $ZSH/oh-my-zsh.sh
 
 
 # USER CONFIG

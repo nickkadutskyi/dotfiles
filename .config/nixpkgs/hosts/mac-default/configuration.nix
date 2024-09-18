@@ -40,8 +40,6 @@
     python311Packages.yt-dlp
 
     # Misc
-    zsh-powerlevel10k
-    zsh-autosuggestions
   ];
   # environment.shellAliases = {
   #   vi = "nvim";
@@ -67,11 +65,10 @@
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
     zsh = {
+      enableCompletion = false;
+      # todo consider if I need to turn this on?
+      enableBashCompletion = false;
       enable = true;
-      promptInit = "
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-      ";
     };
     bash.enable = false;
     fish.enable = false;
@@ -104,6 +101,11 @@
     export DIRENV_LOG_FORMAT=
   '';
 
+  # System configs that can't be done in home-manager
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToControl = true;
+
+  # Apps
   environment.variables.HOMEBREW_NO_ANALYTICS = "1";
   homebrew = {
     enable = true;
@@ -114,14 +116,12 @@
       "Amazon Kindle" = 302584613;
       "Apple Developer" = 640199958;
       "BetterJSON for Safari" = 1511935951;
-      "BetterML for Safari" = 1556487002;
+      "BetterXML for Safari" = 1556487002;
       "Blackmagic Disk Speed Test" = 425264550;
       "DjVu Viewer + DjVu to PDF" = 755261884;
       "Easy CSV Editor" = 1171346381;
-      "Evernote" = 406056744;
       "Fonts Ninja" = 1480227114;
       "iA Writer" = 775737590;
-      "Kagi for Safari" = 1622835804;
       "Keynote" = 409183694;
       "Microsoft Remote Desktop" = 1295203466;
       "Numbers" = 409203825;
@@ -136,11 +136,9 @@
       "Snippety - Snippets Manager" = 1530751461;
       "Telegram" = 747648890;
       "Wayback Machine" = 1472432422;
-      # "Xcode" = 497799835;
     };
     casks = [
       "1password"
-      "adobe-creative-cloud"
       "amazon-chime"
       "anydesk"
       "appcleaner"
@@ -163,31 +161,25 @@
       "google-chrome"
       "google-drive"
       "gpg-suite"
-      "hhkb"
       "hazel"
       "iina"
       "iterm2@beta"
       "itermai"
       "jetbrains-toolbox"
       "karabiner-elements"
-      "lastpass"
-      "little-snitch"
+      # "little-snitch" # disabled because breaking ssh in LAN
       # "logi-options-plus" # deletes/installs on each switch so commenting this out for now
-      # "mamp" # switch al lprojects to devenv.sh and nix flakes and get rid of mamp
       "microsoft-edge"
       "microsoft-teams"
       "obsidian"
-      "orion"
       "protonvpn"
       "rapidapi"
       "raycast"
-      "shortcutdetective"
       "sf-symbols"
       "sketch"
-      "sloth" # for monitoring network and disk usage
+      # "sloth" # for monitoring network and disk usage; never user it
       "splashtop-business"
       "spotify"
-      "swiftdefaultappsprefpane"
       "teamviewer"
       "tor-browser"
       "transmission"
@@ -196,10 +188,8 @@
       "typeface"
       # "upwork" # missing from any package managers so handling it directly
       "veracrypt"
-      "viber"
       "webex"
       "wireshark"
-      "xquartz"
       "zoom"
     ];
     brews = [ ];

@@ -6,6 +6,8 @@
       "steam"
       # "vmware-fusion" # 
       "crossover"
+      "hhkb"
+      "adobe-creative-cloud"
     ];
   };
 }
