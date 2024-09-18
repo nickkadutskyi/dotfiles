@@ -105,6 +105,32 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
+  system.defaults.CustomUserPreferences = {
+    "com.apple.Mail" = {
+      # @ = Cmd; ^ = Control; ~ = Option; $ = Shift
+      NSUserKeyEquivalents = {
+        "\\033Mail\\033Services\\033Mail Selection to Task" = "@$t";
+        "\\033Mail\\033Services\\033Navigate to Mailbox" = "@^n";
+        "\\033Mail\\033Services\\033Move to Mailbox" = "@^m";
+        "\\033Mail\\033Services\\033Get deep links for selected messages" = "@^~d";
+        "\\033Mail\\033Services\\033Markdown to RTF" = "@^r";
+        "Paste as Quotation" = "@^v";
+        "Take All Accounts Offline" = "@$m";
+        "Take All Accounts Online" = "@$o";
+      };
+    };
+    "com.apple.finder" = {
+      NSUserKeyEquivalents = {
+        "\\033File\\033Tags…" = "@^t";
+      };
+    };
+    "com.apple.Safari" = {
+      NSUserKeyEquivalents = {
+        "\\033File\\033Share…" = "@~s";
+      };
+    };
+  };
+
   # Apps
   environment.variables.HOMEBREW_NO_ANALYTICS = "1";
   homebrew = {

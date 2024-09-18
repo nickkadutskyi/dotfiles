@@ -298,6 +298,18 @@
     "com.apple.finder" = {
       ShowPathbar = true;
       ShowStatusBar = true;
+      # NSUserKeyEquivalents = {
+      #   "Tags..." = "~$t";
+      #   "Tags…" = "~$t";
+      # };
+    };
+
+    "com.apple.mail" = {
+      # backslashes don't work properly thus setting this in nix-darwin
+      # NSUserKeyEquivalents = {
+      #   # "\\033Mail\\033Services\\033Move to Mailbox" = "@^m";
+      #   "Paste as Quotation" = "@^v";
+      # };
     };
 
     # Keyboard Shortucts
