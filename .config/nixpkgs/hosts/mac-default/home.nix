@@ -234,6 +234,7 @@
   targets.darwin.defaults = {
     "com.apple.dock" = {
       autohide = true;
+      "mru-spaces" = false;
       "persistent-apps" = [
         {
           GUID = 3016036810;
@@ -442,6 +443,7 @@
       AutoFillCreditCardData = false;
       AutoFillPasswords = false;
       AutoFillMiscellaneousForms = false;
+      AutoFillFromAddressBook = false;
       AutoOpenSafeDownloads = true;
       ShowOverlayStatusBar = true;
       "ShowFavoritesBar-v2" = false;
