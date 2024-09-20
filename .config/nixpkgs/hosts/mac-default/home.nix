@@ -447,7 +447,7 @@
       AutoOpenSafeDownloads = true;
       ShowOverlayStatusBar = true;
       "ShowFavoritesBar-v2" = false;
-      AlwaysRestoreSessionAtLaunch = true;
+      AlwaysRestoreSessionAtLaunch = false;
       HomePage = "";
       ShowStandaloneTabBar = false;
       EnableNarrowTabs = true;
