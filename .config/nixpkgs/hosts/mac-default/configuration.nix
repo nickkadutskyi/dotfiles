@@ -162,6 +162,7 @@
       "Snippety - Snippets Manager" = 1530751461;
       "Telegram" = 747648890;
       "Wayback Machine" = 1472432422;
+      "Core Tunnel" = 1354318707;
     };
     casks = [
       "1password"
@@ -175,7 +176,7 @@
       # "chromium 66" # not present in any package manager so handle it directly
       "cleanshot"
       "clickup"
-      "core-tunnel"
+      # "core-tunnel"
       "daisydisk"
       "dash"
       "discord"
