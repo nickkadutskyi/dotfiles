@@ -6,7 +6,6 @@
 {
   description = "Default user environment packages";
   inputs = {
-    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "github:NixOs/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,8 +19,8 @@
         "Nicks-MacBook-Air" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [
-            # determinate.darwinModules.default
             ./hosts/mac-default/configuration.nix
+            ./hosts/nicks-macbook-air/configuration.nix
           ]
           ++ (if true then [ ./hosts/mac-default/services/dnsmasq.nix ] else [ ])
           ++ (if true then [ ./hosts/mac-default/services/snippety.nix ] else [ ])
@@ -43,7 +42,6 @@
         "Nicks-Mac-mini" = nix-darwin.lib.darwinSystem {
           inherit inputs;
           modules = [
-            # determinate.darwinModules.default
             ./hosts/mac-default/configuration.nix
             ./hosts/nicks-mac-mini/configuration.nix
           ]

@@ -6,6 +6,7 @@
     devenv # development environment
     go # Probably for gcloud
     dart-sass # for sass to css conversion
+    stripe-cli
 
     # PHP Develpoment
     php83 # PHP 8.3 (currently latest) to run symfony console completion
@@ -84,6 +85,7 @@
           gitignore = gitIgnoreGlobal;
         };
       };
+      ".hushlogin" = { enable = true; text = ""; };
     };
 
   programs.zsh =
