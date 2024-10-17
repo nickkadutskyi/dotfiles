@@ -7,6 +7,7 @@
     go # Probably for gcloud
     dart-sass # for sass to css conversion
     stripe-cli
+    mariadb # global db execs mysql and mysqldump for Intellij export/import
 
     # PHP Develpoment
     php83 # PHP 8.3 (currently latest) to run symfony console completion
@@ -86,6 +87,15 @@
         };
       };
       ".hushlogin" = { enable = true; text = ""; };
+      ".tmux.conf" = {
+        enable = true;
+        text = '' 
+          set -sg escape-time 10
+          # Changed to xterm-256color to support italics because tmux-256color doesn't support
+          set -g default-terminal "xterm-256color"
+          set -a terminal-overrides ",*256col*:RGB"
+        '';
+      };
     };
 
   programs.zsh =
@@ -221,10 +231,11 @@
         ips = /* bash */ "ifconfig -a | perl -nle'/(\\d+\\.\\d+\\.\\d+\\.\\d+)/ && print \$1'";
         ip4a = /* bash */ "dig +short -4 myip.opendns.com @resolver4.opendns.com";
         ip6a = /* bash */ "dig +short -6 myip.opendns.com @resolver1.ipv6-sandbox.opendns.com AAAA";
-        vi = "nvim";
-        vim = "nvim";
-        view = "nvim -R";
-        vimdiff = "nvim -d";
+        # TERM=tmux-256color adds support for undercurl in neovim
+        vi = "TERM=tmux-256color nvim";
+        vim = "TERM=tmux-256color nvim";
+        view = "TERM=tmux-256color nvim -R";
+        vimdiff = "TERM=tmux-256color nvim -d";
         # EPDS
         # List EPDS AWS EC2 Instances
         epds_ec2 = "aws ec2 describe-instances  --query 'Reservations[].Instances[?not_null(Tags[?Key==\`Name\`].Value)]|[].[State.Name,PrivateIpAddress,PublicIpAddress,InstanceId,Tags[?Key==\`Name\`].Value[]|[0]] | sort_by(@, &[3])'  --output text |  sed '$!N;s/ / /'";
@@ -422,6 +433,8 @@
       InitialKeyRepeat = 15;
       # Frequency of key repeat
       KeyRepeat = 2;
+      # Prefer tabs when opening documents (always|fullscreen|never)
+      AppleWindowTabbingMode = "always";
     };
 
     "com.apple.AppleMultitouchTrackpad" = {
