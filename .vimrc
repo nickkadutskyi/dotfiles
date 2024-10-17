@@ -4,6 +4,10 @@ set encoding=utf-8
 
 " SETTINGS
 
+" Spell checking
+" set spell 
+" set spelllang=en_us
+
 " Set <space> as leader key
 let mapleader = " "
 let maplocalleader = " "
