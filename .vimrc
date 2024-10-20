@@ -1,8 +1,11 @@
-" scriptencoding utf-8
-set encoding=utf-8
 " Shared setting betwen Vim, Neovim, Ideavim
 
-" SETTINGS
+set title
+set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ -\ '.fnamemodify(resolve(expand('%:p')),':~:.:h').'/'.expand('%:t'):'':''}
+" limit syntax highlighting to columns in case of long lines
+set synmaxcol=500
+" scriptencoding utf-8
+set encoding=utf-8
 
 " Spell checking
 " set spell 

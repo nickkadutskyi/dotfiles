@@ -8,6 +8,7 @@
     dart-sass # for sass to css conversion
     stripe-cli
     mariadb # global db execs mysql and mysqldump for Intellij export/import
+    tree-sitter # for tree-sitter-cli for neovim
 
     # PHP Develpoment
     php83 # PHP 8.3 (currently latest) to run symfony console completion
@@ -23,13 +24,14 @@
     lua54Packages.lua # For lua development and neovim configs
     lua54Packages.luarocks # lua package manager
     stylua # lua formatter
+    lua-language-server # lua_ls
 
     # Tools
     awscli2 # AWS CLI
     google-cloud-sdk # Google Cloud SDK
     ffmpeg # for video conversion
     dos2unix # convert text files with different line breaks
-    imagemagick # for image conversion
+    imagemagick # for image conversion and neovim plugin dependency
     pandoc # for markdown conversion
 
     # Nix
