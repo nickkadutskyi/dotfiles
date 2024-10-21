@@ -1,7 +1,19 @@
 " Shared setting betwen Vim, Neovim, Ideavim
 
 set title
-set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ -\ '.fnamemodify(resolve(expand('%:p')),':~:.:h').'/'.expand('%:t'):'':''}
+set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ \ –\ '.TitleString():'':''}
+function! TitleString()
+    let l:file = expand('%:p')
+    let l:home = $HOME . '/'
+    
+    if l:file =~ '^' . l:home && resolve(l:file) != l:file
+        " File is in home directory and is a symlink
+        return './' . fnamemodify(l:file, ':t')
+    else
+        " Use the original logic for other cases
+        return fnamemodify(resolve(l:file), ':~:.:h') . '/' . expand('%:t')
+    endif
+endfunction
 " limit syntax highlighting to columns in case of long lines
 set synmaxcol=500
 " scriptencoding utf-8

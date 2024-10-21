@@ -13,6 +13,9 @@ nnoremap <leader>cf :action ReformatCode<CR>
 " first lookup item
 imap <C-Y> <Action>(ExpandLiveTemplateCustom)<Action>(EditorChooseLookupItem)
 
+" Code Completion
+inoremap <C-A> :action CodeCompletion<CR>
+
 " Search and Switch
 nnoremap <leader>gf :action GotoFile<CR>
 nnoremap <leader>gc :action GotoClass<CR>
@@ -40,11 +43,11 @@ noremap <leader>rr :action Run<CR>
 noremap <leader>cr :action ChooseRunConfiguration<CR>
 
 " Problems
-nnoremap <leader>xx :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>tt :action ActivateProblemsViewToolWindow<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 " nnoremap <leader>xq :action ProblemsView.QuickFixes<CR>
-nnoremap <leader>xq :action ShowIntentionActions<CR>
+nnoremap <leader>tq :action ShowIntentionActions<CR>
 
 " Project Window
 set NERDTree
