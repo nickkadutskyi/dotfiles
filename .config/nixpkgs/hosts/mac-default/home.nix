@@ -24,7 +24,7 @@
     lua54Packages.lua # For lua development and neovim configs
     lua54Packages.luarocks # lua package manager
     stylua # lua formatter
-    lua-language-server # lua_ls
+    # lua-language-server # lua_ls
 
     # Tools
     awscli2 # AWS CLI
@@ -35,9 +35,9 @@
     pandoc # for markdown conversion
 
     # Nix
-    nixfmt-classic # format nix files
-    nixpkgs-fmt # format nixpkgs files
-    nil # nix lsp server
+    nixfmt-rfc-style # formatter, nixfmt package with maintainers
+    # nil # nix language server
+    # nixd # nix language server
 
     # Misc
     exercism # for coding exercises
