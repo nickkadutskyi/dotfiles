@@ -3,15 +3,24 @@
 set title
 set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ \ –\ '.TitleString():'':''}
 function! TitleString()
-    let l:file = expand('%:p')
+    let l:rootPath = resolve(getcwd())
+    let l:filePath = expand('%:p')
+    let l:fileName = expand('%:t')
     let l:home = $HOME . '/'
+    let l:all_files_str = get(g:, 'all_files_str', '')
     
-    if l:file =~ '^' . l:home && resolve(l:file) != l:file
-        " File is in home directory and is a symlink
-        return './' . fnamemodify(l:file, ':t')
+    if empty(l:all_files_str) " if Neovim defined all_files_str variable
+      if l:filePath =~ '^' . l:home && resolve(l:filePath) != l:filePath " if file is in home directory and symlink
+          return './' . fnamemodify(l:filePath, ':t')
+      else
+          return fnamemodify(resolve(l:filePath), ':~:.:h') . '/' . expand('%:t')
+      endif
+    elseif count(l:all_files_str, l:fileName) > 1 " if other files with same name exist in project
+      return fnamemodify(resolve(l:filePath), ':~:.:h') . '/' . expand('%:t')
+    elseif l:filePath[0:len(l:rootPath)-1] ==# l:rootPath " if file is in root directory
+      return l:fileName
     else
-        " Use the original logic for other cases
-        return fnamemodify(resolve(l:file), ':~:.:h') . '/' . expand('%:t')
+      return fnamemodify(resolve(l:filePath), ':~:.:h') . '/' . expand('%:t')
     endif
 endfunction
 " limit syntax highlighting to columns in case of long lines

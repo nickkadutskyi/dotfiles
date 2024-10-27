@@ -1,6 +1,8 @@
 source ~/.vimrc
 
 set NERDTree
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "150"
 
 " Enables gcc gc{count}{motion} for commenting
 set commentary
@@ -71,3 +73,6 @@ nnoremap n nzzzv
 "false Split Window
 " nnoremap <C-W>s :action SplitHorizontally<CR>
 " nnoremap <C-T>v :action SplitVertically<CR>
+
+" Debugger
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
