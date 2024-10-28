@@ -16,8 +16,14 @@
       php83 # PHP 8.3 (currently latest) to run symfony console completion
       php83Packages.composer # package manager for PHP (to init PHP projects)
       symfony-cli # for Symfony dev
+      # Linters 
       php83Packages.phpstan
       php83Packages.psalm
+      php83Packages.php-codesniffer
+      # Fixers
+      php83Packages.php-cs-fixer
+      # Language Servers
+      nodePackages_latest.intelephense
 
       # JavaScript Development
       pnpm # package manager for JavaScript
@@ -48,6 +54,7 @@
 
       # Misc
       exercism # for coding exercises
+      mas # cli tool for Mac App Store apps to install via homebrew
 
       # Zsh
       zsh-completions # don't why I need this?
@@ -106,6 +113,12 @@
           set -a terminal-overrides ",*256col*:RGB"
         '';
       };
+      ".intelephense_license.txt" = {
+        enable = true;
+        target = ".config/php/intelephense_license.txt";
+        # source = ~/Library/Mobile Documents/com~apple~CloudDocs/Sync/HOME/.config/php/intelephense_license.txt;
+        source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/Library/Mobile\ Documents/com\~apple\~CloudDocs/Sync/HOME/.config/php/intelephense_license.txt");
+      };
     };
 
   programs.zsh =
@@ -113,10 +126,11 @@
       # is embedded into zshenv and zprofile for different kinds of shells
       zpath = # bash
         ''
+          # Paths
           # Homebrew
-          HOMEBREW_PREFIX=$([ -d "/opt/homebrew" ] && echo /opt/homebrew || echo /usr/local)
+          # HOMEBREW_PREFIX=$([ -d "/opt/homebrew" ] && echo /opt/homebrew || echo /usr/local)
           # Set PATH, MANPATH, etc., for Homebrew.
-          [ -d $HOMEBREW_PREFIX ] && eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+          # [ -d $HOMEBREW_PREFIX ] && eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
           #zpath User's private binaries and scripts
           export PATH="$PATH:$HOME/bin"
           # Tizen CLI

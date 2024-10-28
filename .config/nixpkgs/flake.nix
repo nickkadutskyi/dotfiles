@@ -10,6 +10,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
   outputs =
     {
@@ -17,6 +18,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      nix-homebrew,
       ...
     }@inputs:
     {
@@ -39,6 +41,18 @@
                 home-manager.useUserPackages = false;
                 home-manager.users = {
                   nick.imports = [ ./hosts/mac-default/home.nix ];
+                };
+              }
+            ]
+            ++ [
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  # User owning the Homebrew prefix
+                  user = "nick";
+                  autoMigrate = true;
                 };
               }
             ]
