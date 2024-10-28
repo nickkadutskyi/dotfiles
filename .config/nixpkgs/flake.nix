@@ -81,6 +81,18 @@
                 };
               }
             ]
+            ++ [
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  # User owning the Homebrew prefix
+                  user = "nick";
+                  autoMigrate = true;
+                };
+              }
+            ]
             ++ [ ];
         };
       };
