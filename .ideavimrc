@@ -49,7 +49,7 @@ nnoremap <leader>tt :action ActivateProblemsViewToolWindow<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 " nnoremap <leader>xq :action ProblemsView.QuickFixes<CR>
-nnoremap <leader>tq :action ShowIntentionActions<CR>
+nnoremap <leader>ca :action ShowIntentionActions<CR>
 
 " Project Window
 set NERDTree
@@ -57,7 +57,11 @@ nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
 
 " Navigation
 " Go to Declaration or Usage
-nnoremap gd :action GotoDeclaration<CR>
+" nnoremap gd :action GotoDeclaration<CR>
+" Go to Declaration
+nnoremap gd :action GotoDeclarationOnly<CR>
+" Go to References
+nnoremap gr :action ShowUsages<CR>
 " Go to Implementation
 nnoremap gi :action GotoImplementation<CR>
 " Forward Jump Pooint
