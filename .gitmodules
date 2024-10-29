@@ -2,3 +2,7 @@
 	path = .config/nixpkgs
 	url = git@github.com:nickkadutskyi/nixpkgs.git
 	branch = main
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:nickkadutskyi/nvim.git
+	branch = main
