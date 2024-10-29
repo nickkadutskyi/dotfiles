@@ -1,3 +1,4 @@
 [submodule ".config/nixpkgs"]
 	path = .config/nixpkgs
 	url = git@github.com:nickkadutskyi/nixpkgs.git
+	branch = main
