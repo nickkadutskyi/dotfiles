@@ -18,6 +18,10 @@ imap <C-Y> <Action>(ExpandLiveTemplateCustom)<Action>(EditorChooseLookupItem)
 " Code Completion
 inoremap <C-A> :action CodeCompletion<CR>
 
+" Helpers
+nmap <C-h>  <Action>(QuickImplementations)
+imap <C-h>  <Action>(QuickImplementations)
+
 " Search and Switch
 nnoremap <leader>gf :action GotoFile<CR>
 nnoremap <leader>gc :action GotoClass<CR>
@@ -52,7 +56,6 @@ nnoremap [d :action GotoPreviousError<CR>
 nnoremap <leader>ca :action ShowIntentionActions<CR>
 
 " Project Window
-set NERDTree
 nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
 
 " Navigation
