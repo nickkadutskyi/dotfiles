@@ -1,9 +1,13 @@
 " Shared setting betwen Vim, Neovim, Ideavim
 
 set title
-set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ \ –\ '.TitleString():'':''}
+" Show only for buffers with files
+" set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ \ –\ '.TitleString():'':''}
+" Show for all buffers
+set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?'\ \ –\ '.TitleString():''}
 function! TitleString()
     let l:rootPath = resolve(getcwd())
+    let l:relativeFilePath = expand('%')
     let l:filePath = expand('%:p')
     let l:fileName = expand('%:t')
     let l:home = $HOME . '/'
@@ -17,6 +21,12 @@ function! TitleString()
       endif
     elseif count(l:all_files_str, l:fileName) > 1 " if other files with same name exist in project
       return fnamemodify(resolve(l:filePath), ':~:.:h') . '/' . expand('%:t')
+    elseif count(l:all_files_str, l:fileName) == 0 " if not in project
+      if l:relativeFilePath =~ '^term://'
+        return "term " . split(l:relativeFilePath, ':')[-1]
+      else
+        return l:relativeFilePath
+      endif
     elseif l:filePath[0:len(l:rootPath)-1] ==# l:rootPath " if file is in root directory
       return l:fileName
     else
@@ -106,7 +116,7 @@ set splitright
 
 " Sets how vim will display certain whitespace in the editor.
 set list
-let &listchars="tab:»\ ,space:·,trail:·,extends:⟩,nbsp:␣"
+let &listchars="tab:»\ ,space:‧,trail:‧,extends:⟩,nbsp:␣"
 
 " Enables cursor line highlight groups
 set cursorline
@@ -243,6 +253,8 @@ function! s:CloseNetrw() abort
   endfor
 endfunction
 
+command! CloseNetrw call s:CloseNetrw()
+
 function! NetrwMapping()
   nnoremap <buffer><silent> <Esc> :call <SID>CloseNetrw()<CR>
   nnoremap <buffer><silent> <q> :call <SID>CloseNetrw()<CR>
@@ -261,6 +273,7 @@ augroup END
 augroup close_on_open
   autocmd!
   autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), "&filetype") != "netrw"|call <SID>CloseNetrw()|endif
+  " autocmd FileType netrw autocmd BufLeave <buffer> if &filetype == 'netrw' |call <SID>CloseNetrw()|endif
 aug END
 
 

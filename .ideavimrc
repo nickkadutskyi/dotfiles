@@ -8,6 +8,7 @@ let g:highlightedyank_highlight_duration = "150"
 set commentary
 
 " Adds common action in IDE
+map <leader>mrp <Action>(ManageRecentProjects)
 
 " Formatting
 nnoremap <leader>cf :action ReformatCode<CR>
@@ -21,6 +22,7 @@ inoremap <C-A> :action CodeCompletion<CR>
 " Helpers
 nmap <C-h>  <Action>(QuickImplementations)
 imap <C-h>  <Action>(QuickImplementations)
+nmap <leader>sd <Action>(ShowErrorDescription)
 
 " Search and Switch
 nnoremap <leader>gf :action GotoFile<CR>
@@ -32,9 +34,11 @@ nnoremap <leader>fp :action FindInPath<CR>
 nnoremap <leader>gb :action Switcher<CR>
 
 " Git
-nnoremap <leader>ggs :action ActivateCommitToolWindow<CR>
+nnoremap <leader>ags :action ActivateCommitToolWindow<CR>
 nnoremap <leader>ggc :action ActivateVersionControlToolWindow<CR>
 nnoremap <leader>ggb :action Vcs.ShowTabbedFileHistory<CR>
+" Preview hunk
+nmap <leader>ph <Action>(VcsShowCurrentChangeMarker)
 
 " View Modes
 nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
@@ -48,6 +52,9 @@ noremap <leader>cd :action ChooseDebugConfiguration<CR>
 noremap <leader>rr :action Run<CR>
 noremap <leader>cr :action ChooseRunConfiguration<CR>
 
+" Run
+nnoremap <leader>ar :action ActivateRunToolWindow<CR>
+
 " Problems
 nnoremap <leader>tt :action ActivateProblemsViewToolWindow<CR>
 nnoremap ]d :action GotoNextError<CR>
@@ -57,6 +64,9 @@ nnoremap <leader>ca :action ShowIntentionActions<CR>
 
 " Project Window
 nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
+
+" Terminal
+nnoremap <leader>at :action ActivateTerminalToolWindow<CR>
 
 " Navigation
 " Go to Declaration or Usage
