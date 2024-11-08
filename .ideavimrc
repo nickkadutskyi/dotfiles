@@ -34,11 +34,22 @@ nnoremap <leader>fp :action FindInPath<CR>
 nnoremap <leader>gb :action Switcher<CR>
 
 " Git
-nnoremap <leader>ags :action ActivateCommitToolWindow<CR>
-nnoremap <leader>ggc :action ActivateVersionControlToolWindow<CR>
-nnoremap <leader>ggb :action Vcs.ShowTabbedFileHistory<CR>
+" Manage status before commit
+nnoremap <leader>avc :action ActivateCommitToolWindow<CR>
+nnoremap <leader>ac :action ActivateCommitToolWindow<CR>
+nnoremap <A-K> :action ActivateCommitToolWindow<CR>
+" Show log for a current file
+nnoremap <leader>avf :action Vcs.ShowTabbedFileHistory<CR>
+" Show log
+nnoremap <leader>avl :action Vcs.Show.Log<CR>
+" Initiate Push
+nmap <S-A-K> <Action>(Vcs.Push) 
+nmap <leader>avP <Action>(Vcs.Push) 
+" Initiate Pull
+nmap <A-T> <Action>(Vcs.UpdateProject) 
+nmap <leader>avp <Action>(Vcs.UpdateProject) 
 " Preview hunk
-nmap <leader>ph <Action>(VcsShowCurrentChangeMarker)
+nmap <leader>sh <Action>(VcsShowCurrentChangeMarker)
 
 " View Modes
 nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
@@ -50,7 +61,7 @@ nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
 " noremap <leader>dd :action Debug<CR>
 noremap <leader>cd :action ChooseDebugConfiguration<CR>
 noremap <leader>rr :action Run<CR>
-noremap <leader>cr :action ChooseRunConfiguration<CR>
+noremap <leader>rt :action ChooseRunConfiguration<CR>
 
 " Run
 nnoremap <leader>ar :action ActivateRunToolWindow<CR>
