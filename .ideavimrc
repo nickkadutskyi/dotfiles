@@ -11,7 +11,7 @@ set commentary
 map <leader>mrp <Action>(ManageRecentProjects)
 
 " Formatting
-nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>rc :action ReformatCode<CR>
 " Depending on the context will either expand Emmet abbreviation or choose
 " first lookup item
 imap <C-Y> <Action>(ExpandLiveTemplateCustom)<Action>(EditorChooseLookupItem)
@@ -59,9 +59,11 @@ nnoremap <leader>mdf :action ToggleDistractionFreeMode<CR>
 
 " Running/Debugging
 " noremap <leader>dd :action Debug<CR>
+" [c]hoose [d]ebug configuration
 noremap <leader>cd :action ChooseDebugConfiguration<CR>
 noremap <leader>rr :action Run<CR>
-noremap <leader>rt :action ChooseRunConfiguration<CR>
+" [c]hoose [r]un configuration
+noremap <leader>ct :action ChooseRunConfiguration<CR>
 
 " Run
 nnoremap <leader>ar :action ActivateRunToolWindow<CR>

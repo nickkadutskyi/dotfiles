@@ -1,9 +1,6 @@
 " Shared setting betwen Vim, Neovim, Ideavim
 
 set title
-" Show only for buffers with files
-" set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?&buftype==''?'\ \ –\ '.TitleString():'':''}
-" Show for all buffers
 set titlestring=%{fnamemodify(getcwd(),':t')}%{expand('%:t')!=''?'\ \ –\ '.TitleString():''}
 function! TitleString()
     let l:rootPath = resolve(getcwd())
@@ -35,8 +32,6 @@ function! TitleString()
 endfunction
 " limit syntax highlighting to columns in case of long lines
 set synmaxcol=500
-" scriptencoding utf-8
-set encoding=utf-8
 
 " Spell checking
 " set spell 
@@ -53,9 +48,6 @@ set relativenumber
 
 " Enables mouse reporting (for scrolling and resizing windows with the mouse)
 set mouse=a
-
-" Shows mode
-set showmode
 
 " Adds yanked text into system's clipboard
 " In MacOs and Windows both + and * registers point to system clipboard
@@ -102,9 +94,6 @@ set smartcase
 set hlsearch
 " Incremental search
 set incsearch
-
-" Keep signcolumnd on by default (for LSP, git, etc)
-set signcolumn=yes
 
 " Decrease update time
 set updatetime=250
