@@ -9,39 +9,6 @@ set commentary
 
 
 " Keymap
-" Activategithub.copilotToolWindowToolWindow
-" ActivateGitHubCopilotChatToolWindow
-" ActivateWelcometoGitHubCopilotToolWindow
-" copilot.applyInlays
-" copilot.applyInlaysNextLine
-" copilot.applyInlaysNextWord
-" copilot.chat.show
-" copilot.cycleNextInlays
-" copilot.cyclePrevInlays
-" copilot.disableCopilot
-" copilot.disableCopilotFile
-" copilot.disposeInlays
-" copilot.documentation
-" copilot.enableCopilot
-" copilot.feedback
-" copilot.inlayContextMenu
-" copilot.keymap
-" copilot.logCertificates
-" copilot.logDiagnostics
-" copilot.loginGitHub
-" copilot.logoutGitHub
-" copilot.newChatSession
-" copilot.openCopilot
-" copilot.openStatus
-" copilot.requestCompletions
-" copilot.settings
-" copilot.status
-" copilot.statusBarErrorPopup
-" copilot.statusBarPopup
-" copilot.statusBarRestartPopup
-" copilot.toolsActionGroupLoggedIn
-" copilot.toolsActionGroupLoggedOut
-" copilot.welcome
 
 " AI Assistant Suggestions
 inoremap <Tab> <Action>(copilot.applyInlays)
