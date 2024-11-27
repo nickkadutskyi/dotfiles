@@ -1,0 +1,16 @@
+[general]
+import = ["~/.alacritty_theme.toml"]
+working_directory = "./"
+
+[window]
+decorations = "Full"
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "JetBrainsMonoNL Nerd Font", style = "Regular" }
+size=13
+offset={ x = 1, y = 7 }
+glyph_offset = { x = 0, y = 4 }
+builtin_box_drawing=true
+
+[keyboard]
