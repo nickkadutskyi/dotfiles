@@ -16,7 +16,8 @@ cursor = "#000000"
 
 [colors.vi_mode_cursor] # 
 text = "CellBackground"
-cursor = "CellForeground"
+cursor = "#000000"
+# cursor = "CellForeground"
 
 [colors.search]
 matches = { foreground = "#000000", background = "#FCD47E" }

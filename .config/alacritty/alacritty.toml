@@ -50,8 +50,16 @@ blink_timeout = 60
 unfocused_hollow = true
 thickness = 0.2
 
-[keyboard]
-
 [terminal]
 # Always open a shell in the home directory
-# shell = { program = "sh", args = ["-c", "cd ~; zsh"] }
+shell = { program = "/bin/zsh", args = ["-c", "cd ~; zsh"] }
+
+[mouse]
+hide_when_typing = true
+
+[hints] # For special text and hyperlinks
+
+[keyboard]
+bindings = [
+    { key = "Space", mods = "Alt", action = "ToggleViMode" }
+]
