@@ -1,16 +1,57 @@
 [general]
-import = ["~/.alacritty_theme.toml"]
-working_directory = "./"
+# If ~/.alacritty_theme.toml exists (handled  by LaunchAgent on macOS), 
+# it will import light.toml or dark.toml and overwrite first import
+import = ["themes/light.toml", "~/.alacritty_theme.toml"]
+# TODO create keybinding to keep ~ as working directory
+working_directory = "None"
 
 [window]
+padding = { x = 5, y = 4 } # Similar to padding in iTerm
+dynamic_padding = false    # Even padding
 decorations = "Full"
-startup_mode = "Maximized"
+opacity = 1.0
+blur = false
+# startup_mode = "Maximized"         # Implement Opt + Enter to toggle SimpleFullscreen
+startup_mode = "Windowed"          # Implement Opt + Enter to toggle SimpleFullscreen
+dynamic_title = true
+decorations_theme_variant = "None"
+resize_increments = false
+option_as_alt = "OnlyLeft"         # Left for <A-..> bindings in Neovim, Right for special chars
+
+[scrolling]
+history = 100000
+multiplier = 3
 
 [font]
-normal = { family = "JetBrainsMonoNL Nerd Font", style = "Regular" }
-size=13
-offset={ x = 1, y = 7 }
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 13
+offset = { x = 1, y = 7 }
 glyph_offset = { x = 0, y = 4 }
-builtin_box_drawing=true
+builtin_box_drawing = true
+
+[colors]
+# Provided in themes/light.toml or theme/dark.toml
+
+[bell]
+duration = 200
+animation = "EaseOutExpo"
+command = { program = "osascript", args = ["-e", "beep"] }
+
+[selection]
+save_to_clipboard = false
+
+[cursor.style]
+shape = "Block"
+blinking = "Always"
+
+[cursor]
+blink_interval = 500
+blink_timeout = 60
+unfocused_hollow = true
+thickness = 0.2
 
 [keyboard]
+
+[terminal]
+# Always open a shell in the home directory
+# shell = { program = "sh", args = ["-c", "cd ~; zsh"] }
