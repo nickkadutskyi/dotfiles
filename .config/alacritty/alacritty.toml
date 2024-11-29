@@ -2,21 +2,21 @@
 # If ~/.alacritty_theme.toml exists (handled  by LaunchAgent on macOS), 
 # it will import light.toml or dark.toml and overwrite first import
 import = ["themes/light.toml", "~/.alacritty_theme.toml"]
-# TODO create keybinding to keep ~ as working directory
-working_directory = "None"
 
 [window]
-padding = { x = 5, y = 4 } # Similar to padding in iTerm
-dynamic_padding = false    # Even padding
+padding = { x = 5, y = 5 }
+# Even padding
+dynamic_padding = true
 decorations = "Full"
-opacity = 1.0
-blur = false
-# startup_mode = "Maximized"         # Implement Opt + Enter to toggle SimpleFullscreen
-startup_mode = "Windowed"          # Implement Opt + Enter to toggle SimpleFullscreen
+# Disabled for now because shadows are not working
+# opacity = 0.95
+# blur = true
+startup_mode = "Windowed"
 dynamic_title = true
 decorations_theme_variant = "None"
 resize_increments = false
-option_as_alt = "OnlyLeft"         # Left for <A-..> bindings in Neovim, Right for special chars
+# Left for <A-..> bindings in Neovim, Right for special chars
+option_as_alt = "OnlyLeft"
 
 [scrolling]
 history = 100000
@@ -30,7 +30,7 @@ glyph_offset = { x = 0, y = 4 }
 builtin_box_drawing = true
 
 [colors]
-# Provided in themes/light.toml or theme/dark.toml
+# Provided in themes/lighttoml or theme/dark.toml
 
 [bell]
 duration = 200
@@ -52,14 +52,93 @@ thickness = 0.2
 
 [terminal]
 # Always open a shell in the home directory
-shell = { program = "/bin/zsh", args = ["-c", "cd ~; zsh"] }
+# shell = { program = "/bin/zsh", args = ["-c", "cd ~; zsh"] }
+
+[terminal.shell]
+# Start every new window with a tmux session in a `alacritty` group and attach to it
+# Keybinding is changed to kill session if its window is closed 
+# (window name is the same as session name that started that window)
+program = "/run/current-system/sw/bin/tmux"
+args = [
+  "new",
+  "-A",
+  "-t",
+  "alacritty",
+  "-s",
+  "0",
+  ";",
+  # renames window to 0 to have the same name as session
+  "rename-window",
+  "0",
+  ";",
+  # binds Ctrl+B x to kill pane without confirmation but with special logic
+  "bind-key",
+  "x",
+  "if-shell",
+  # test if it's the last pane in the current window
+  "/run/current-system/sw/bin/tmux display-message -p '#{window_panes}' | grep ^1\\$",
+  # if it is the last pane, check if there is only one window left in the group
+  # if there is only one window left, detach the client (always keeps last window and session running)
+  # if not the last window in the group, kill the pane and the session by window name (same as session name)
+  "if-shell 'test $(/run/current-system/sw/bin/tmux list-windows | wc -l) -eq 1' 'detach-client' 'run-shell \"/run/current-system/sw/bin/tmux kill-pane ; /run/current-system/sw/bin/tmux kill-session -t \\\"#{window_name}\\\"\"'",
+  # if not the last pane just kill the pane
+  "kill-pane",
+  ";",
+  # removes status bar
+  "set-option",
+  "-g",
+  "status",
+  "off",
+]
 
 [mouse]
 hide_when_typing = true
+bindings = [{ mouse = "Left", mods = "Shift", action = "ExpandSelection" }]
 
 [hints] # For special text and hyperlinks
 
 [keyboard]
 bindings = [
-    { key = "Space", mods = "Alt", action = "ToggleViMode" }
+
+  # Tmux integration as in iTerm
+  # `⌘ + T` creates new tab and starts a new tmux session in the `alacritty` group
+  { key = "T", mods = "Command", command = { program = "/opt/homebrew/bin/alacritty", args = [
+    "msg",
+    "create-window",
+    "--command",
+    "/bin/zsh",
+    "-c",
+    # Uses Alacritty's window id as tmux session name and window name
+    "tmux new -A -t alacritty -s $ALACRITTY_WINDOW_ID \\; new-window -n $ALACRITTY_WINDOW_ID && exit",
+  ] } },
+  # Sends `Ctrl+B` x to tmux session to trigger special key binding 
+  # (close pane or close pane and kill session)
+  { key = "W", mods = "Command", chars = "\u0002x" },
+  # TODO create `⌘ + N` keybinding that will prompt to either create new Tmux or non-Tmux window
+  # `⌘ + N` prompts to create new Tmux or non-Tmux window
+  # { key = "N", mods = "Command", command = { program = "/opt/homebrew/bin/alacritty", args = []}
+
+  { key = "Escape", mods = "Alt", action = "ToggleViMode" },
+  # ⌘ + enter puts window in macOS full screen
+  { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
+  # opt + right and left jump between words
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left", mods = "Alt", chars = "\u001BB" },
+  # ⌘ + d adds a pane to the right (splits window vertically)
+  { key = "D", mods = "Command", chars = "\u0002%" },
+  # ⌘ + ⇧ + d adds a pane below (splits window horizontally)
+  { key = "D", mods = "Command|Shift", chars = "\u0002\"" },
+  # ⌘ + w prompts you to close the pane, "y" to confirm
+  # { key = "W", mods = "Command", chars = "\u0002x" },
+  # ⌘ + arrows are for directional navigation around the panes
+  # move down a pane
+  { key = "Down", mods = "Command|Alt", chars = "\u0002\u001b[B" },
+  # move up a pane
+  { key = "Up", mods = "Command|Alt", chars = "\u0002\u001b[A" },
+  # move left a pane
+  { key = "Left", mods = "Command|Alt", chars = "\u0002\u001b[D" },
+  # move right a pane
+  { key = "Right", mods = "Command|Alt", chars = "\u0002\u001b[C" },
+  # ⌘ + ⇧ + enter maximizes the pane within the alacritty window
+  { key = "Enter", mods = "Command|Shift", chars = "\u0002z" },
 ]
