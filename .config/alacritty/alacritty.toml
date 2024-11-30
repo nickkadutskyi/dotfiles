@@ -131,12 +131,11 @@ bindings = [
     """
     tmux new -A -t alacritty -s $ALACRITTY_WINDOW_ID \
       \\; if-shell \"[ '#{window_name}' = 'zsh' ]\" \
-        \"rename-window $ALACRITTY_WINDOW_ID\" \
-        \"new-window -n $ALACRITTY_WINDOW_ID\" \
+        "rename-window 0" "new-window" \
+      \\; rename "#{window_id}" \
       \\; bind-key x if-shell "echo '#{window_panes}' | grep ^1$" \
-        "run-shell 'tmux kill-pane ; tmux kill-session -t \\\"#{window_name}\\\"'" \
+        "kill-pane; run-shell 'tmux kill-session -t \\"#{window_id}\\"'" \
         "kill-pane" \
-      \\; set-option -g status off \
     && exit
     """,
   ] } },
@@ -153,7 +152,40 @@ bindings = [
         if [ "$(echo $session | cut -d: -f3)" = "not" ] && [ "$(echo $session | cut -d: -f4)" = "alacritty" ] ; then \
           /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c "tmux attach -d -t \"$ses_name\""; \
         fi; \
-      done; zsh
+      done;
+    """,
+  ] } },
+  # Prompts user to select a tmux session to attach to in a new tab
+  { key = "T", mods = "Command|Alt", command = { program = "/opt/homebrew/bin/alacritty", args = [
+    "msg",
+    "create-window",
+    "--title",
+    "Select Persistent Shell",
+    "-e",
+    "/bin/zsh",
+    "-c",
+    """
+    selected=$(/run/current-system/sw/bin/tmux list-windows \
+      -F '#{window_id}:#{window_name}:#{?window_active_clients,att,not}:#{session_group}' | \
+      grep ':not:alacritty$' | \
+      awk -F: '{printf \"%-4s %s\\n\", $1, $2}' | \
+      fzf --height 40% --reverse) && \
+    selected_id=$(echo $selected | cut -w -f1); \
+    if [ ! -z "$selected_id" ]; then \
+      /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c " \
+      tmux attach -d -t \"$selected_id\" \\; select-window -t \"$selected_id\" \
+      "; \
+    fi
+    """,
+  ] } },
+  { key = "T", mods = "Command|Shift", command = { program = "/opt/homebrew/bin/alacritty", args = [
+    "msg",
+    "create-window",
+    "-e",
+    "/bin/zsh",
+    "-c",
+    """
+      echo 1 | fzf --height 40% --reverse
     """,
   ] } },
 
