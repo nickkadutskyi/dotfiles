@@ -33,7 +33,7 @@ builtin_box_drawing = true
 # Provided in themes/lighttoml or theme/dark.toml
 
 [bell]
-duration = 200
+duration = 100
 animation = "EaseOutExpo"
 command = { program = "osascript", args = ["-e", "beep"] }
 
@@ -134,12 +134,29 @@ bindings = [
         \"rename-window $ALACRITTY_WINDOW_ID\" \
         \"new-window -n $ALACRITTY_WINDOW_ID\" \
       \\; bind-key x if-shell "echo '#{window_panes}' | grep ^1$" \
-        "kill-pane ; kill-session" \
+        "run-shell 'tmux kill-pane ; tmux kill-session -t \\\"#{window_name}\\\"'" \
         "kill-pane" \
       \\; set-option -g status off \
     && exit
     """,
   ] } },
+  # Reattach to all tmux session in alacritty group while creating Alacritty
+  # window for each tmux session
+  { key = "G", mods = "Command", command = { program = "/bin/zsh", args = [
+    "-c",
+    # Uses Alacritty's window id as tmux session name and window name
+    # bash
+    """
+    /run/current-system/sw/bin/tmux list-sessions \
+      -F '#{session_name}:#{window_name}:#{?session_attached,att,not}:#{session_group}' | while read -r session; do \
+        ses_name=$(echo $session | cut -d: -f1); \
+        if [ "$(echo $session | cut -d: -f3)" = "not" ] && [ "$(echo $session | cut -d: -f4)" = "alacritty" ] ; then \
+          /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c "tmux attach -d -t \"$ses_name\""; \
+        fi; \
+      done; zsh
+    """,
+  ] } },
+
 
   # Tmux universal key bindings
   # `⌘ + ⌥ + w` to close the pane (sends `Ctrl+B x`)
