@@ -4,7 +4,7 @@
 import = ["themes/light.toml", "~/.alacritty_theme.toml"]
 
 [window]
-padding = { x = 5, y = 5 }
+padding = { x = 2, y = 2 }
 # Even padding
 dynamic_padding = true
 decorations = "Full"
@@ -121,19 +121,9 @@ bindings = [
 
   # Simple Tmux integration for persistent shells
   # Opens a new tab (window) with persistent shell handled by tmux
-  { key = "P", mods = "Command", command = { program = "/opt/homebrew/bin/alacritty", args = [
-    "msg",
-    "create-window",
-    "-e",
-    "/bin/zsh",
+  { key = "P", mods = "Command", command = { program = "/bin/zsh", args = [
     "-c",
-    """
-    tmux new -A -t alacritty -s 0 \
-      \\; source-file ~/.config/alacritty/.tmux.conf \
-      \\; if-shell "[ '#W' = 'zsh' ]" "renamew 0" "neww" \
-      \\; rename "#{window_id}" \
-    && exit
-    """,
+    "~/.config/alacritty/scripts.sh new-window",
   ] } },
   # Reattach to all tmux session in alacritty group while creating Alacritty
   # window for each tmux session
