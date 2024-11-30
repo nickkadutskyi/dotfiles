@@ -17,7 +17,7 @@ function init-select-window() {
 
 # Create a new alacritty window and attach to a tmux session selected by user
 function select-window() {
-    printf '\e]0;%s\e\\' "Select a tmux window"
+    printf '\e]0;%s\e\\' "Activate persistent window"
     if [ -z "$1" ]; then
         echo "No windows provided"
         exit 1
