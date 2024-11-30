@@ -127,15 +127,11 @@ bindings = [
     "-e",
     "/bin/zsh",
     "-c",
-    # Uses Alacritty's window id as tmux session name and window name
     """
-    tmux new -A -t alacritty -s $ALACRITTY_WINDOW_ID \
-      \\; if-shell \"[ '#{window_name}' = 'zsh' ]\" \
-        "rename-window 0" "new-window" \
+    tmux new -A -t alacritty -s 0 \
+      \\; source-file ~/.config/alacritty/.tmux.conf \
+      \\; if-shell "[ '#W' = 'zsh' ]" "renamew 0" "neww" \
       \\; rename "#{window_id}" \
-      \\; bind-key x if-shell "echo '#{window_panes}' | grep ^1$" \
-        "kill-pane; run-shell 'tmux kill-session -t \\"#{window_id}\\"'" \
-        "kill-pane" \
     && exit
     """,
   ] } },
