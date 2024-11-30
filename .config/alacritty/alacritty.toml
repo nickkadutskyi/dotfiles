@@ -152,42 +152,10 @@ bindings = [
     """,
   ] } },
   # Prompts user to select a tmux session to attach to in a new tab
-  { key = "T", mods = "Command|Alt", command = { program = "/opt/homebrew/bin/alacritty", args = [
-    "msg",
-    "create-window",
-    "--title",
-    "Select Persistent Shell",
-    "-e",
-    "/bin/zsh",
+  { key = "T", mods = "Command|Alt", command = { program = "/bin/zsh", args = [
     "-c",
-    """
-    windows=$(/run/current-system/sw/bin/tmux list-windows \
-      -F '#{window_id}:#{window_name}:#{?window_active_clients,att,not}:#{session_group}' | \
-      grep ':not:alacritty$') && \
-    if [ ! -z "$windows" ]; then \
-      selected=$(echo $windows | \
-      awk -F: '{printf \"%-4s %s\\n\", $1, $2}' | \
-      fzf --height 40% --reverse) && \
-      selected_id=$(echo $selected | cut -w -f1); \
-      if [ ! -z "$selected_id" ]; then \
-        /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c " \
-        tmux attach -d -t \"$selected_id\" \\; select-window -t \"$selected_id\" \
-        "; \
-      fi; \
-    fi
-    """,
+    "/Users/nick/.config/alacritty/scripts.sh init-select-window",
   ] } },
-  { key = "T", mods = "Command|Shift", command = { program = "/opt/homebrew/bin/alacritty", args = [
-    "msg",
-    "create-window",
-    "-e",
-    "/bin/zsh",
-    "-c",
-    """
-      echo 1 | fzf --height 40% --reverse
-    """,
-  ] } },
-
 
   # Tmux universal key bindings
   # `⌘ + ⌥ + w` to close the pane (sends `Ctrl+B x`)
