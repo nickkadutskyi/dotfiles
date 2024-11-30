@@ -165,16 +165,19 @@ bindings = [
     "/bin/zsh",
     "-c",
     """
-    selected=$(/run/current-system/sw/bin/tmux list-windows \
+    windows=$(/run/current-system/sw/bin/tmux list-windows \
       -F '#{window_id}:#{window_name}:#{?window_active_clients,att,not}:#{session_group}' | \
-      grep ':not:alacritty$' | \
+      grep ':not:alacritty$') && \
+    if [ ! -z "$windows" ]; then \
+      selected=$(echo $windows | \
       awk -F: '{printf \"%-4s %s\\n\", $1, $2}' | \
       fzf --height 40% --reverse) && \
-    selected_id=$(echo $selected | cut -w -f1); \
-    if [ ! -z "$selected_id" ]; then \
-      /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c " \
-      tmux attach -d -t \"$selected_id\" \\; select-window -t \"$selected_id\" \
-      "; \
+      selected_id=$(echo $selected | cut -w -f1); \
+      if [ ! -z "$selected_id" ]; then \
+        /opt/homebrew/bin/alacritty msg create-window -e /bin/zsh -c " \
+        tmux attach -d -t \"$selected_id\" \\; select-window -t \"$selected_id\" \
+        "; \
+      fi; \
     fi
     """,
   ] } },
