@@ -58,7 +58,7 @@ function select-window() {
     fi
     sel_win=$(
         format-windows-list $1 |
-            fzf --height 40% --sort --reverse \
+            fzf --sort --reverse \
                 --header=$'Manage persistent shells\nENTER: attach, CTRL-K: kill, CTRL-C: cancel' \
                 --header-first \
                 --bind 'enter:accept' \

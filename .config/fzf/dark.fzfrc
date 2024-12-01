@@ -3,5 +3,5 @@
 --color='header:#DCDEE2,pointer:#32426B,query:#DCDEE2,marker:#B4985C'
 --color='border:#43454A,separator:#43454A,prompt:#DCDEE2,info:#707379,disabled:#707379'
 --prompt='  '
---margin 1%,1%,1%,1%
+--margin 3%,1%
 --border=horizontal
