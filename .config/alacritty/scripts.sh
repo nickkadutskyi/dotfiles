@@ -57,7 +57,6 @@ function select-window() {
         tmux attach -d -t "$ses_name" \; select-window -t "$sel_win_id"
     else
         echo "No window selected"
-        echo $PATH
     fi
 }
 
