@@ -9,6 +9,7 @@ TMEXEC=$(which tmux)
 CMD_KILL='tmux kill-session -t $(echo {1} | cut -w -f1 ); tmux kill-window -t $(echo {1} | cut -w -f1)'
 CMD_FORMAT='awk -F: '\''{printf "%-4s (%s) %s\n", $1, $2, $3}'\'''
 CMD_RELOAD=$TMEXEC' list-windows -F "'$TMUX_FORMAT'" | grep ":n:'$TMGROUP'$" | '$CMD_FORMAT
+export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
 
 # Create a new alacritty window and attach to a new tmux session
 function new-window() {
