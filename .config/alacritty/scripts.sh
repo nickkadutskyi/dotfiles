@@ -2,19 +2,33 @@
 
 b=$(tput bold)
 n=$(tput sgr0)
-TPGROUP="alacritty"
-TPCONF="$HOME/.config/alacritty/.tmux.conf"
+TMGROUP="alacritty"
+TMCONF="$HOME/.config/alacritty/.tmux.conf"
 
 # TODO: ability to kill window and related session in selector
 
 # Create a new alacritty window and attach to a new tmux session
 function new-window() {
-    TMUXEXEC=$(which tmux)
-    alacritty msg create-window -e $TMUXEXEC new -A -t $TPGROUP -s 0 \
-        \; source-file $TPCONF \
+    TMEXEC=$(which tmux)
+    alacritty msg create-window -e $TMEXEC new -A -t $TMGROUP -s 0 \
+        \; source-file $TMCONF \
         \; if-shell "[ '#W' = 'zsh' ]" "renamew 0" "neww" \
         \; rename "#{window_id}" \
-        \; set-env -g TMUXEXEC "$TMUXEXEC"
+        \; set-env -g TMEXEC "$TMEXEC"
+}
+
+# Reattach to all tmux windows in alacritty group
+function reattach-all() {
+    TMEXEC=$(which tmux)
+    tmux_format="#{window_id}:#{?window_active_clients,a,n}:#{session_group}"
+    tmux list-windows -F $tmux_format |
+        grep ":n:${TMGROUP}$" |
+        while read -r window; do
+            win_id=$(echo $window | cut -d: -f1)
+            ses_name=$win_id # tmux session name is the same as window id
+            alacritty msg create-window -e $TMEXEC attach -d -t $ses_name \
+                \; select-window -t $win_id
+        done
 }
 
 # If there are any windows with alacritty group and not attached to a client
@@ -22,7 +36,7 @@ function new-window() {
 function init-select-window() {
     tmux_format="#{window_id}:#{pane_current_command}:#W:#{?window_active_clients,a,n}:#{session_group}"
     # Gets only windows with alacritty group and not attached to a client
-    windows=$(tmux list-windows -F "$tmux_format" | grep ':n:alacritty$')
+    windows=$(tmux list-windows -F "$tmux_format" | grep ":n:$TMGROUP$")
     if [ ! -z "$windows" ]; then
         alacritty msg create-window --hold -e /bin/zsh \
             -c "~/.config/alacritty/scripts.sh select-window '$windows'"
@@ -53,6 +67,7 @@ function usage() {
     echo "  ${b}init-select-window${n}               Init tmux widow selector in a new alacritty window."
     echo "  ${b}select-window${n} [list of windows]  Prompt user to select a tmux window to attach to."
     echo "  ${b}new-window${n}                       Create a new alacritty window and attach to a new tmux session."
+    echo "  ${b}reattach-all${n}                     Reattach to all tmux widows in $TMGROUP group."
 }
 
 case "$1" in
@@ -64,6 +79,9 @@ case "$1" in
     ;;
 "new-window")
     new-window
+    ;;
+"reattach-all")
+    reattach-all
     ;;
 *)
     usage $0
