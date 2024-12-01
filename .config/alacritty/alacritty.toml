@@ -4,7 +4,7 @@
 import = ["themes/light.toml", "~/.alacritty_theme.toml"]
 
 [window]
-padding = { x = 2, y = 2 }
+padding = { x = 1, y = 0 }
 # Even padding
 dynamic_padding = true
 decorations = "Full"

@@ -10,8 +10,6 @@ CMD_KILL='tmux kill-session -t $(echo {1} | cut -w -f1 ); tmux kill-window -t $(
 CMD_FORMAT='awk -F: '\''{printf "%-4s (%s) %s\n", $1, $2, $3}'\'''
 CMD_RELOAD=$TMEXEC' list-windows -F "'$TMUX_FORMAT'" | grep ":n:'$TMGROUP'$" | '$CMD_FORMAT
 
-# TODO: ability to kill window and related session in selector
-
 # Create a new alacritty window and attach to a new tmux session
 function new-window() {
     alacritty msg create-window -e $TMEXEC new -A -t $TMGROUP -s 0 \
