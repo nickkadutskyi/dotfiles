@@ -58,43 +58,6 @@ thickness = 0.2
 program = "/bin/zsh"
 args = ["-c", "cd ~; zsh"]
 
-# Tmux integration like in iTerm
-# Start every new window with a tmux session in a `alacritty` group and attach to it
-# Keybinding is changed to kill session if its window is closed
-# (window name is the same as session name that started that window)
-# program = "/run/current-system/sw/bin/tmux"
-# args = [
-#   "new",
-#   "-A",
-#   "-t",
-#   "alacritty",
-#   "-s",
-#   "0",
-#   ";",
-#   # renames window to 0 to have the same name as session
-#   "rename-window",
-#   "0",
-#   ";",
-#   # binds Ctrl+B x to kill pane without confirmation but with special logic
-#   "bind-key",
-#   "x",
-#   "if-shell",
-#   # test if it's the last pane in the current window
-#   "/run/current-system/sw/bin/tmux display-message -p '#{window_panes}' | grep ^1\\$",
-#   # if it is the last pane, check if there is only one window left in the group
-#   # if there is only one window left, detach the client (always keeps last window and session running)
-#   # if not the last window in the group, kill the pane and the session by window name (same as session name)
-#   "if-shell 'test $(/run/current-system/sw/bin/tmux list-windows | wc -l) -eq 1' 'detach-client' 'run-shell \"/run/current-system/sw/bin/tmux kill-pane ; /run/current-system/sw/bin/tmux kill-session -t \\\"#{window_name}\\\"\"'",
-#   # if not the last pane just kill the pane
-#   "kill-pane",
-#   ";",
-#   # removes status bar
-#   "set-option",
-#   "-g",
-#   "status",
-#   "off",
-# ]
-
 [mouse]
 hide_when_typing = true
 bindings = [{ mouse = "Left", mods = "Shift", action = "ExpandSelection" }]
@@ -103,22 +66,6 @@ bindings = [{ mouse = "Left", mods = "Shift", action = "ExpandSelection" }]
 
 [keyboard]
 bindings = [
-
-  # Tmux integration like in iTerm
-  # # `⌘ + T` creates new tab and starts a new tmux session in the `alacritty` group
-  # { key = "T", mods = "Command", command = { program = "/opt/homebrew/bin/alacritty", args = [
-  #   "msg",
-  #   "create-window",
-  #   "--command",
-  #   "/bin/zsh",
-  #   "-c",
-  #   # Uses Alacritty's window id as tmux session name and window name
-  #   "tmux new -A -t alacritty -s $ALACRITTY_WINDOW_ID \\; new-window -n $ALACRITTY_WINDOW_ID && exit",
-  # ] } },
-  # # Sends `Ctrl+B` x to tmux session to trigger special key binding
-  # # (close pane or close pane and kill session)
-  # { key = "W", mods = "Command", chars = "\u0002x" },
-
   # Simple Tmux integration for persistent shells
   # Opens a new tab (window) with persistent shell handled by tmux
   { key = "P", mods = "Command", command = { program = "/bin/zsh", args = [
