@@ -81,7 +81,7 @@ bindings = [
   # Prompts user to select a tmux session to attach to in a new tab
   { key = "T", mods = "Command|Alt", command = { program = "/bin/zsh", args = [
     "-c",
-    "/Users/nick/.config/alacritty/scripts.sh init-select-window",
+    "/Users/nick/.config/alacritty/scripts.sh init-select-pane",
   ] } },
 
   # Tmux universal key bindings
