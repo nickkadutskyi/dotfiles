@@ -59,7 +59,7 @@ program = "/bin/zsh"
 args = ["-c", "cd ~; zsh"]
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 bindings = [{ mouse = "Left", mods = "Shift", action = "ExpandSelection" }]
 
 [hints] # For special text and hyperlinks
