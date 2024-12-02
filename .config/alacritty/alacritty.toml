@@ -4,7 +4,7 @@
 import = ["themes/light.toml", "~/.alacritty_theme.toml"]
 
 [window]
-padding = { x = 1, y = 0 }
+padding = { x = 1, y = 1 }
 # Even padding
 dynamic_padding = true
 decorations = "Full"
@@ -25,7 +25,7 @@ multiplier = 3
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 13
-offset = { x = 1, y = 7 }
+offset = { x = 1, y = 9 }
 glyph_offset = { x = 0, y = 4 }
 builtin_box_drawing = true
 
