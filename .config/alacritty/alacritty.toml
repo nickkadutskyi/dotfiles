@@ -106,7 +106,7 @@ bindings = [
   { key = "D", mods = "Command|Shift", chars = "\u0002\"" },
 
   # Convenience
-  { key = "Escape", mods = "Alt", action = "ToggleViMode" },
+  { key = "Escape", mods = "Shift", action = "ToggleViMode" },
   # ⌘ + enter puts window in macOS full screen
   { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
   # ⌥ + → and ← move between words

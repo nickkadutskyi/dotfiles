@@ -87,7 +87,7 @@ nnoremap [d :action GotoPreviousError<CR>
 nnoremap <leader>ca :action ShowIntentionActions<CR>
 
 " Project Window
-nnoremap <leader>fb :action ActivateProjectToolWindow<CR>
+nnoremap <leader>ap :action ActivateProjectToolWindow<CR>
 
 " Terminal
 nnoremap <leader>at :action ActivateTerminalToolWindow<CR>
